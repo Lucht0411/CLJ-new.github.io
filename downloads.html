@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>各種資料ダウンロード | COSCO SHIPPING LOGISTICS JAPAN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --accent-500: #f97316;
+            --accent-600: #ea580c;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .dark {
+            color-scheme: dark;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/seed/shipping-documents/1920/600.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .download-table th {
+            background-color: var(--primary-600);
+            color: white;
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 500;
+        }
+
+        .download-table td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .download-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .download-table tr:nth-child(even) {
+            background-color: var(--gray-50);
+        }
+
+        .dark .download-table tr:nth-child(even) {
+            background-color: var(--gray-800);
+        }
+
+        .download-table tr:hover {
+            background-color: var(--gray-100);
+        }
+
+        .dark .download-table tr:hover {
+            background-color: var(--gray-700);
+        }
+
+        .file-link {
+            color: var(--primary-600);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: color 0.2s;
+        }
+
+        .file-link:hover {
+            color: var(--primary-800);
+            text-decoration: underline;
+        }
+
+        .file-icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        .file-type-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .file-type-pdf {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .file-type-excel {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .file-type-word {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .file-type-zip {
+            background-color: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        .dark .file-type-pdf {
+            background-color: #7f1d1d;
+            color: #fca5a5;
+        }
+
+        .dark .file-type-excel {
+            background-color: #14532d;
+            color: #86efac;
+        }
+
+        .dark .file-type-word {
+            background-color: #1e3a8a;
+            color: #93c5fd;
+        }
+
+        .dark .file-type-zip {
+            background-color: #4c1d95;
+            color: #d8b4fe;
+        }
+
+        .tab-container {
+            margin-bottom: 2rem;
+        }
+
+        .tab-button {
+            padding: 12px 24px;
+            background-color: transparent;
+            border: none;
+            border-bottom: 2px solid transparent;
+            font-weight: 500;
+            color: var(--gray-600);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .tab-button:hover {
+            color: var(--primary-600);
+        }
+
+        .tab-button.active {
+            color: var(--primary-600);
+            border-bottom-color: var(--primary-600);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Text color classes for primary colors */
+        .text-primary-50 { color: var(--primary-50); }
+        .text-primary-100 { color: var(--primary-100); }
+        .text-primary-200 { color: var(--primary-200); }
+        .text-primary-300 { color: var(--primary-300); }
+        .text-primary-400 { color: var(--primary-400); }
+        .text-primary-500 { color: var(--primary-500); }
+        .text-primary-600 { color: var(--primary-600); }
+        .text-primary-700 { color: var(--primary-700); }
+        .text-primary-800 { color: var(--primary-800); }
+        .text-primary-900 { color: var(--primary-900); }
+        
+        /* Background color classes for primary colors */
+        .bg-primary-50 { background-color: var(--primary-50); }
+        .bg-primary-100 { background-color: var(--primary-100); }
+        .bg-primary-200 { background-color: var(--primary-200); }
+        .bg-primary-300 { background-color: var(--primary-300); }
+        .bg-primary-400 { background-color: var(--primary-400); }
+        .bg-primary-500 { background-color: var(--primary-500); }
+        .bg-primary-600 { background-color: var(--primary-600); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-800 { background-color: var(--primary-800); }
+        .bg-primary-900 { background-color: var(--primary-900); }
+        
+        /* Border color classes for primary colors */
+        .border-primary-600 { border-color: var(--primary-600); }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-600);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+        }
+
+        .dark .form-input {
+            background-color: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-50);
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                min-height: 40vh;
+            }
+            
+            .download-table {
+                font-size: 14px;
+            }
+            
+            .download-table th,
+            .download-table td {
+                padding: 8px 12px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 dark:bg-gray-900">
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold text-primary-800 dark:text-primary-200">
+                            COSCO SHIPPING LOGISTICS
+                        </h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">JAPAN</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block flex-1">
+                    <div class="ml-10 flex items-center justify-center space-x-1">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="home">ホーム</span>
+                        </a>
+                        <a href="company.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="company">会社案内</span>
+                        </a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="services">サービス</span>
+                        </a>
+                        <a href="schedule.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="schedule">スケジュール</span>
+                        </a>
+                        <a href="news.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="news">ニュース</span>
+                        </a>
+                        <a href="announcement.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="announcement">お知らせ</span>
+                        </a>
+                        <a href="contact.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="contact">お問い合わせ</span>
+                        </a>
+                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="recruitment">採用情報</span>
+                        </a>
+                        <a href="downloads.html" class="text-primary-600 hover:text-primary-800 px-2 py-2 rounded-md text-xs font-medium border-b-2 border-primary-600 transition-colors whitespace-nowrap">
+                            <span data-i18n="downloads">各種資料ダウンロード</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Selector & Theme Toggle -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <select id="languageSelector" class="form-input text-sm py-1 px-2">
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                    
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="home">ホーム</span>
+                </a>
+                <a href="company.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="company">会社案内</span>
+                </a>
+                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="services">サービス</span>
+                </a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="schedule">スケジュール</span>
+                </a>
+                <a href="news.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="news">ニュース</span>
+                </a>
+                <a href="announcement.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="announcement">お知らせ</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="contact">お問い合わせ</span>
+                </a>
+                <a href="recruitment.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="recruitment">採用情報</span>
+                </a>
+                <a href="downloads.html" class="block px-3 py-2 text-primary-600 font-medium border-l-4 border-primary-600">
+                    <span data-i18n="downloads">各種資料ダウンロード</span>
+                </a>
+            </div>
+            
+            <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                <select id="mobileLanguageSelector" class="form-input text-sm w-full">
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+                    各種資料ダウンロード
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                    輸出入関連の各種書式や資料をダウンロードできます
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
+            <!-- Tab Navigation -->
+            <div class="tab-container">
+                <div class="flex border-b border-gray-200 dark:border-gray-700">
+                    <button class="tab-button active" data-tab="import">
+                        輸入
+                    </button>
+                    <button class="tab-button" data-tab="export">
+                        輸出
+                    </button>
+                </div>
+            </div>
+
+            <!-- Import Tab Content -->
+            <div id="import" class="tab-content active">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">輸入関連書式</h2>
+                <div class="overflow-x-auto">
+                    <table class="download-table">
+                        <thead>
+                            <tr>
+                                <th>ファイル</th>
+                                <th>サイズ</th>
+                                <th>形式</th>
+                                <th>更新日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        輸入申告書
+                                    </a>
+                                </td>
+                                <td>245 KB</td>
+                                <td><span class="file-type-badge file-type-pdf">PDF</span></td>
+                                <td>2025年9月15日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        インボイス記入例
+                                    </a>
+                                </td>
+                                <td>1.2 MB</td>
+                                <td><span class="file-type-badge file-type-excel">Excel</span></td>
+                                <td>2025年9月10日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        パッキングリスト
+                                    </a>
+                                </td>
+                                <td>180 KB</td>
+                                <td><span class="file-type-badge file-type-word">Word</span></td>
+                                <td>2025年9月8日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        原産地証明書申請書
+                                    </a>
+                                </td>
+                                <td>320 KB</td>
+                                <td><span class="file-type-badge file-type-pdf">PDF</span></td>
+                                <td>2025年9月5日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        輸入関連手続きマニュアル
+                                    </a>
+                                </td>
+                                <td>3.5 MB</td>
+                                <td><span class="file-type-badge file-type-zip">ZIP</span></td>
+                                <td>2025年8月28日</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Export Tab Content -->
+            <div id="export" class="tab-content">
+                <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">輸出関連書式</h2>
+                <div class="overflow-x-auto">
+                    <table class="download-table">
+                        <thead>
+                            <tr>
+                                <th>ファイル</th>
+                                <th>サイズ</th>
+                                <th>形式</th>
+                                <th>更新日</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        輸出申告書
+                                    </a>
+                                </td>
+                                <td>280 KB</td>
+                                <td><span class="file-type-badge file-type-pdf">PDF</span></td>
+                                <td>2025年9月18日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        コマーシャルインボイス
+                                    </a>
+                                </td>
+                                <td>980 KB</td>
+                                <td><span class="file-type-badge file-type-excel">Excel</span></td>
+                                <td>2025年9月12日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        船荷証券（B/L）
+                                    </a>
+                                </td>
+                                <td>520 KB</td>
+                                <td><span class="file-type-badge file-type-pdf">PDF</span></td>
+                                <td>2025年9月10日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        保険証券申請書
+                                    </a>
+                                </td>
+                                <td>340 KB</td>
+                                <td><span class="file-type-badge file-type-word">Word</span></td>
+                                <td>2025年9月7日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        輸出関連規制リスト
+                                    </a>
+                                </td>
+                                <td>1.8 MB</td>
+                                <td><span class="file-type-badge file-type-excel">Excel</span></td>
+                                <td>2025年9月3日</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <a href="#" class="file-link">
+                                        <svg class="file-icon" fill="currentColor" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z" clip-rule="evenodd" />
+                                        </svg>
+                                        輸出許可申請手続き
+                                    </a>
+                                </td>
+                                <td>2.3 MB</td>
+                                <td><span class="file-type-badge file-type-zip">ZIP</span></td>
+                                <td>2025年8月25日</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">COSCO SHIPPING LOGISTICS</h3>
+                    <p class="text-gray-300 text-sm">
+                        グローバルな物流ネットワークを活かし、<br>
+                        お客様のビジネスをサポートします。
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="services.html" class="hover:text-white">海運貨物</a></li>
+                        <li><a href="services.html" class="hover:text-white">航空貨物</a></li>
+                        <li><a href="services.html" class="hover:text-white">倉庫・保管</a></li>
+                        <li><a href="services.html" class="hover:text-white">カスタムズブローカー</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="company.html" class="hover:text-white">会社概要</a></li>
+                        <li><a href="recruitment.html" class="hover:text-white">採用情報</a></li>
+                        <li><a href="contact.html" class="hover:text-white">お問い合わせ</a></li>
+                        <li><a href="announcement.html" class="hover:text-white">お知らせ</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-md font-semibold mb-4">ダウンロード</h4>
+                    <ul class="space-y-2 text-sm text-gray-300">
+                        <li><a href="downloads.html" class="hover:text-white">各種資料</a></li>
+                        <li><a href="schedule.html" class="hover:text-white">スケジュール</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-700 text-center text-sm text-gray-400">
+                <p>&copy; 2025 COSCO SHIPPING LOGISTICS JAPAN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    // Deactivate all tabs
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Activate clicked tab
+                    button.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Mobile menu toggle
+            const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            mobileMenuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            // Theme toggle
+            const themeToggle = document.getElementById('themeToggle');
+            const htmlElement = document.documentElement;
+            
+            themeToggle.addEventListener('click', () => {
+                if (htmlElement.classList.contains('dark')) {
+                    htmlElement.classList.remove('dark');
+                    localStorage.setItem('theme', 'light');
+                } else {
+                    htmlElement.classList.add('dark');
+                    localStorage.setItem('theme', 'dark');
+                }
+            });
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'dark') {
+                htmlElement.classList.add('dark');
+            }
+        });
+    </script>
+</body>
+</html>

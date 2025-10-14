@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お知らせ | COSCO SHIPPING LOGISTICS JAPAN</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-200: #bfdbfe;
+            --primary-300: #93c5fd;
+            --primary-400: #60a5fa;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --accent-500: #f97316;
+            --accent-600: #ea580c;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+        }
+
+        body {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .dark {
+            color-scheme: dark;
+        }
+
+        /* Text color classes for primary colors */
+        .text-primary-50 { color: var(--primary-50); }
+        .text-primary-100 { color: var(--primary-100); }
+        .text-primary-200 { color: var(--primary-200); }
+        .text-primary-300 { color: var(--primary-300); }
+        .text-primary-400 { color: var(--primary-400); }
+        .text-primary-500 { color: var(--primary-500); }
+        .text-primary-600 { color: var(--primary-600); }
+        .text-primary-700 { color: var(--primary-700); }
+        .text-primary-800 { color: var(--primary-800); }
+        .text-primary-900 { color: var(--primary-900); }
+        
+        /* Background color classes for primary colors */
+        .bg-primary-50 { background-color: var(--primary-50); }
+        .bg-primary-100 { background-color: var(--primary-100); }
+        .bg-primary-200 { background-color: var(--primary-200); }
+        .bg-primary-300 { background-color: var(--primary-300); }
+        .bg-primary-400 { background-color: var(--primary-400); }
+        .bg-primary-500 { background-color: var(--primary-500); }
+        .bg-primary-600 { background-color: var(--primary-600); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-800 { background-color: var(--primary-800); }
+        .bg-primary-900 { background-color: var(--primary-900); }
+        
+        /* Border color classes for primary colors */
+        .border-primary-600 { border-color: var(--primary-600); }
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-800));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://picsum.photos/seed/shipping-announcement/1920/600.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .announcement-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .announcement-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .announcement-card {
+            background: var(--gray-800);
+        }
+
+        .announcement-date {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            background-color: var(--primary-100);
+            color: var(--primary-800);
+        }
+
+        .dark .announcement-date {
+            background-color: var(--primary-900);
+            color: var(--primary-200);
+        }
+
+        .announcement-category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .category-important {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .category-info {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .category-update {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .category-maintenance {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            background-color: var(--primary-100);
+            color: var(--primary-800);
+            border-radius: 6px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background-color: var(--primary-200);
+        }
+
+        .dark .download-btn {
+            background-color: var(--primary-900);
+            color: var(--primary-200);
+        }
+
+        .dark .download-btn:hover {
+            background-color: var(--primary-800);
+        }
+
+        .file-type-badge {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 500;
+            margin-left: 8px;
+        }
+
+        .file-type-pdf {
+            background-color: #fee2e2;
+            color: #dc2626;
+        }
+
+        .file-type-excel {
+            background-color: #dcfce7;
+            color: #166534;
+        }
+
+        .file-type-word {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .dark .file-type-pdf {
+            background-color: #7f1d1d;
+            color: #fca5a5;
+        }
+
+        .dark .file-type-excel {
+            background-color: #14532d;
+            color: #86efac;
+        }
+
+        .dark .file-type-word {
+            background-color: #1e3a8a;
+            color: #93c5fd;
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            background: white;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .pagination button.active {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .dark .pagination button {
+            background: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-200);
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-600);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+        }
+
+        .dark .form-input {
+            background-color: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-50);
+    
+            margin-top: 2rem;
+    }
+
+
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            background: white;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .pagination button.active {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .dark .pagination button {
+            background: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-200);
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                min-height: 40vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold text-primary-800 dark:text-primary-200">
+                            COSCO SHIPPING LOGISTICS
+                        </h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">JAPAN</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block flex-1">
+                    <div class="ml-10 flex items-center justify-center space-x-1">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="home">ホーム</span>
+                        </a>
+                        <a href="company.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="company">会社案内</span>
+                        </a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="services">サービス</span>
+                        </a>
+                        <a href="schedule.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="schedule">スケジュール</span>
+                        </a>
+                        <a href="news.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="news">ニュース</span>
+                        </a>
+                        <a href="announcement.html" class="text-primary-600 hover:text-primary-800 px-2 py-2 rounded-md text-xs font-medium border-b-2 border-primary-600 transition-colors whitespace-nowrap">
+                            <span data-i18n="announcement">お知らせ</span>
+                        </a>
+                        <a href="contact.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="contact">お問い合わせ</span>
+                        </a>
+                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="recruitment">採用情報</span>
+                        </a>
+                        <a href="downloads.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                            <span data-i18n="downloads">各種資料ダウンロード</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Selector & Theme Toggle -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <select id="languageSelector" class="form-input text-sm py-1 px-2">
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                    
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="home">ホーム</span>
+                </a>
+                <a href="company.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="company">会社案内</span>
+                </a>
+                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="services">サービス</span>
+                </a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="schedule">スケジュール</span>
+                </a>
+                <a href="news.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="news">ニュース</span>
+                </a>
+                <a href="announcement.html" class="block px-3 py-2 text-primary-600 font-medium border-l-4 border-primary-600">
+                    <span data-i18n="announcement">お知らせ</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="contact">お問い合わせ</span>
+                </a>
+                <a href="recruitment.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="recruitment">採用情報</span>
+                </a>
+                <a href="downloads.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="downloads">各種資料ダウンロード</span>
+                </a>
+            </div>
+            
+            <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                <select id="mobileLanguageSelector" class="form-input text-sm w-full">
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+                    お知らせ
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                    重要なお知らせやシステム更新情報をお届けします
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg p-6">
+            <!-- Filter Section -->
+            <div class="mb-8 flex flex-wrap gap-2 justify-center">
+                <button class="filter-btn px-4 py-2 rounded-full bg-primary-600 text-white font-medium" data-category="all">
+                    すべて
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium" data-category="important">
+                    重要
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium" data-category="info">
+                    お知らせ
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium" data-category="update">
+                    更新
+                </button>
+                <button class="filter-btn px-4 py-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 font-medium" data-category="maintenance">
+                    メンテナンス
+                </button>
+            </div>
+
+            <!-- Announcements List -->
+            <div id="announcementsList" class="space-y-4">
+                <!-- Announcement 1 -->
+                <div class="announcement-card p-6" data-category="important">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center mb-2 md:mb-0">
+                            <span class="announcement-date">2025年9月30日</span>
+                            <span class="announcement-category category-important">重要</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="download-btn">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                ダウンロード
+                                <span class="file-type-badge file-type-pdf">PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        システムメンテナンスのお知らせ
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        2025年10月5日(日) 2:00～6:00の間、システムメンテナンスを実施いたします。メンテナンス期間中は一部サービスが利用できなくなりますので、ご注意ください。
+                    </p>
+                </div>
+
+                <!-- Announcement 2 -->
+                <div class="announcement-card p-6" data-category="update">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center mb-2 md:mb-0">
+                            <span class="announcement-date">2025年9月28日</span>
+                            <span class="announcement-category category-update">更新</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="download-btn">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                ダウンロード
+                                <span class="file-type-badge file-type-excel">Excel</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        貨物追跡システムの機能更新
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        貨物追跡システムに新機能が追加されました。リアルタイム通知機能と詳細な配送状況表示が可能になりました。詳しくは添付ファイルをご確認ください。
+                    </p>
+                </div>
+
+                <!-- Announcement 3 -->
+                <div class="announcement-card p-6" data-category="info">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center mb-2 md:mb-0">
+                            <span class="announcement-date">2025年9月25日</span>
+                            <span class="announcement-category category-info">お知らせ</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="download-btn">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                ダウンロード
+                                <span class="file-type-badge file-type-word">Word</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        年末年始の営業時間について
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        年末年始期間の営業時間を変更いたします。12月29日～1月3日までの営業時間につきましては、添付ファイルをご確認ください。
+                    </p>
+                </div>
+
+                <!-- Announcement 4 -->
+                <div class="announcement-card p-6" data-category="maintenance">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center mb-2 md:mb-0">
+                            <span class="announcement-date">2025年9月20日</span>
+                            <span class="announcement-category category-maintenance">メンテナンス</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="download-btn">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                ダウンロード
+                                <span class="file-type-badge file-type-pdf">PDF</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        システム定期メンテナンス完了のお知らせ
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        9月19日に実施いたしましたシステム定期メンテナンスが完了いたしました。ご不便をおかけいたしましたが、すべてのサービスは平常通りご利用いただけます。
+                    </p>
+                </div>
+
+                <!-- Announcement 5 -->
+                <div class="announcement-card p-6" data-category="info">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div class="flex items-center mb-2 md:mb-0">
+                            <span class="announcement-date">2025年9月15日</span>
+                            <span class="announcement-category category-info">お知らせ</span>
+                        </div>
+                        <div class="flex gap-2">
+                            <a href="#" class="download-btn">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                                </svg>
+                                ダウンロード
+                                <span class="file-type-badge file-type-excel">Excel</span>
+                            </a>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                        新サービス開始のお知らせ
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        10月1日より、新たな国際複合輸送サービスを開始いたします。アジア～ヨーロッパ間の輸送時間を短縮し、コストも削減可能です。詳細は添付ファイルをご確認ください。
+                    </p>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button id="prevPage" class="disabled">前へ</button>
+                <button class="active">1</button>
+                <button>2</button>
+                <button>3</button>
+                <button id="nextPage">次へ</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">COSCO SHIPPING LOGISTICS</h3>
+                    <p class="text-gray-400 text-sm">
+                        世界中に広がるネットワークで、お客様の物流ニーズにお応えします。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="text-md font-semibold mb-4">ナビゲーション</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">ホーム</a></li>
+                        <li><a href="company.html" class="text-gray-400 hover:text-white transition-colors">会社案内</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">サービス</a></li>
+                        <li><a href="schedule.html" class="text-gray-400 hover:text-white transition-colors">スケジュール</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-md font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">海上貨物輸送</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">航空貨物輸送</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">倉庫サービス</a></li>
+                        <li><a href="services.html" class="text-gray-400 hover:text-white transition-colors">カスタムズブローカー</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-md font-semibold mb-4">お問い合わせ</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li>〒100-0001</li>
+                        <li>東京都千代田区千代田1-1-1</li>
+                        <li>電話: 03-1234-5678</li>
+                        <li>メール: info@cosco-logistics.jp</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 COSCO SHIPPING LOGISTICS JAPAN. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script>
+    </script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Filter functionality
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            const announcements = document.querySelectorAll('.announcement-card');
+            
+            filterBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    filterBtns.forEach(b => {
+                        b.classList.remove('bg-primary-600', 'text-white');
+                        b.classList.add('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                    });
+                    btn.classList.remove('bg-gray-200', 'dark:bg-gray-700', 'text-gray-700', 'dark:text-gray-300');
+                    btn.classList.add('bg-primary-600', 'text-white');
+                    
+                    // Filter announcements
+                    const category = btn.getAttribute('data-category');
+                    announcements.forEach(announcement => {
+                        if (category === 'all' || announcement.getAttribute('data-category') === category) {
+                            announcement.style.display = 'block';
+                        } else {
+                            announcement.style.display = 'none';
+                        }
+                    });
+                });
+            });
+            
+            // Pagination functionality
+            const paginationBtns = document.querySelectorAll('.pagination button:not(#prevPage):not(#nextPage)');
+            const prevBtn = document.getElementById('prevPage');
+            const nextBtn = document.getElementById('nextPage');
+            
+            paginationBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    // Update active button
+                    paginationBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    
+                    // Update prev/next button states
+                    if (btn.textContent === '1') {
+                        prevBtn.classList.add('disabled');
+                    } else {
+                        prevBtn.classList.remove('disabled');
+                    }
+                    
+                    if (btn.textContent === '3') {
+                        nextBtn.classList.add('disabled');
+                    } else {
+                        nextBtn.classList.remove('disabled');
+                    }
+                    
+                    // In a real application, this would load different content
+                    // For now, we'll just scroll to top
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
