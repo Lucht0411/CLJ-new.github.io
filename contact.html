@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お問い合わせ - COSCO SHIPPING LOGISTICS (JAPAN)</title>
+    <meta name="description" content="COSCO SHIPPING LOGISTICS (JAPAN)へのお問い合わせ、お見積もり依頼はこちらから。専門スタッフが迅速に対応いたします。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --secondary-500: #64748b;
+            --accent-500: #f97316;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-600: #525252;
+            --gray-800: #262626;
+            --gray-900: #171717;
+        }
+
+        * {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        body {
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+        }
+
+        .dark {
+            background-color: var(--gray-900);
+            color: var(--gray-50);
+        }
+
+        .dark body {
+            background-color: var(--gray-900);
+            color: var(--gray-50);
+        }
+
+        .bg-primary-600 { background-color: var(--primary-600); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-800 { background-color: var(--primary-800); }
+        .bg-primary-900 { background-color: var(--primary-900); }
+        .bg-secondary-500 { background-color: var(--secondary-500); }
+        .bg-accent-500 { background-color: var(--accent-500); }
+        .bg-gray-50 { background-color: var(--gray-50); }
+        .bg-gray-100 { background-color: var(--gray-100); }
+        .bg-gray-200 { background-color: var(--gray-200); }
+        .bg-gray-800 { background-color: var(--gray-800); }
+        .bg-gray-900 { background-color: var(--gray-900); }
+
+        .text-primary-600 { color: var(--primary-600); }
+        .text-primary-700 { color: var(--primary-700); }
+        .text-primary-800 { color: var(--primary-800); }
+        .text-primary-900 { color: var(--primary-900); }
+        .text-secondary-500 { color: var(--secondary-500); }
+        .text-accent-500 { color: var(--accent-500); }
+        .text-gray-50 { color: var(--gray-50); }
+        .text-gray-100 { color: var(--gray-100); }
+        .text-gray-200 { color: var(--gray-200); }
+        .text-gray-600 { color: var(--gray-600); }
+        .text-gray-800 { color: var(--gray-800); }
+        .text-gray-900 { color: var(--gray-900); }
+
+        .border-primary-600 { border-color: var(--primary-600); }
+        .border-primary-700 { border-color: var(--primary-700); }
+        .border-gray-200 { border-color: var(--gray-200); }
+        .border-gray-300 { border-color: #d4d4d4; }
+        .border-gray-600 { border-color: var(--gray-600); }
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://kimi-web-img.moonshot.cn/img/www.brookesbell.com/3a56a018643bfaeecd76023d339625869bb9b4fa.jpg') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-600);
+            border: 2px solid var(--primary-600);
+            padding: 10px 22px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary-600);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .form-input.error {
+            border-color: #ef4444;
+        }
+
+        .dark .form-input {
+            background-color: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-50);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .contact-info-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .contact-info-item {
+            background: var(--gray-800);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 1.5rem 0;
+        }
+
+        .dark .faq-item {
+            border-bottom-color: var(--gray-600);
+        }
+
+        .faq-question {
+            cursor: pointer;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--gray-900);
+        }
+
+        .dark .faq-question {
+            color: var(--gray-50);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-top: 0;
+            color: var(--gray-600);
+        }
+
+        .dark .faq-answer {
+            color: var(--gray-400);
+        }
+
+        .faq-answer.active {
+            max-height: 200px;
+            padding-top: 1rem;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-icon.active {
+            transform: rotate(180deg);
+        }
+
+        .chat-widget {
+            position: fixed;
+            bottom: 100px;
+            right: 24px;
+            z-index: 1000;
+        }
+
+        .chat-button {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-600);
+            color: white;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chat-button:hover {
+            background: var(--primary-700);
+            transform: scale(1.1);
+        }
+
+        .chat-popup {
+            position: absolute;
+            bottom: 80px;
+            right: 0;
+            width: 350px;
+            height: 500px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .dark .chat-popup {
+            background: var(--gray-800);
+        }
+
+        .chat-header {
+            background: var(--primary-600);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: between;
+            align-items: center;
+        }
+
+        .chat-body {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-input-area {
+            padding: 1rem;
+            border-top: 1px solid var(--gray-200);
+            display: flex;
+            gap: 8px;
+        }
+
+        .dark .chat-input-area {
+            border-top-color: var(--gray-600);
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                min-height: 40vh;
+            }
+            
+            .chat-popup {
+                width: 300px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold text-primary-800 dark:text-primary-200">
+                            COSCO SHIPPING LOGISTICS
+                        </h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">JAPAN</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="home">ホーム</span>
+                        </a>
+                        <a href="company.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="company">会社案内</span>
+                        </a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="services">サービス</span>
+                        </a>
+                        <a href="schedule.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="schedule">スケジュール</span>
+                        </a>
+                        <a href="news.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="news">ニュース</span>
+                        </a>
+                        <a href="contact.html" class="text-primary-600 hover:text-primary-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600">
+                            <span data-i18n="contact">お問い合わせ</span>
+                        </a>
+                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            採用情報
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Selector & Theme Toggle -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <select id="languageSelector" class="form-input text-sm py-1 px-2">
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                    
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="home">ホーム</span>
+                </a>
+                <a href="company.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="company">会社案内</span>
+                </a>
+                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="services">サービス</span>
+                </a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="schedule">スケジュール</span>
+                </a>
+                <a href="news.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="news">ニュース</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-primary-600 font-medium border-l-4 border-primary-600">
+                    <span data-i18n="contact">お問い合わせ</span>
+                </a>
+                <a href="recruitment.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    採用情報
+                </a>
+            </div>
+            
+            <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                <select id="mobileLanguageSelector" class="form-input text-sm w-full">
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+                    お問い合わせ
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                    輸送のご相談、お見積もり、その他お問い合わせはお気軽にご連絡ください
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+                    お問い合わせ窓口
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    お客様のニーズに合わせて、最適な方法でお問い合わせいただけます
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Phone Contact -->
+                <div class="contact-info-item animate-on-scroll">
+                    <div class="contact-icon bg-primary-600">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-1">電話</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">03-3593-6000</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">平日 9:00-18:00</p>
+                    </div>
+                </div>
+
+                <!-- Email Contact -->
+                <div class="contact-info-item animate-on-scroll">
+                    <div class="contact-icon bg-accent-500">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-1">メール</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">info@cosco-japan.com</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">24時間受付</p>
+                    </div>
+                </div>
+
+                <!-- Fax Contact -->
+                <div class="contact-info-item animate-on-scroll">
+                    <div class="contact-icon bg-green-600">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-1">FAX</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">03-3593-6001</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">24時間受付</p>
+                    </div>
+                </div>
+
+                <!-- Emergency Contact -->
+                <div class="contact-info-item animate-on-scroll">
+                    <div class="contact-icon bg-red-600">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L4.082 16.5c-.77.833.192 2.5 1.732 2.5z"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-gray-900 dark:text-white mb-1">緊急連絡</h3>
+                        <p class="text-gray-600 dark:text-gray-400 text-sm mb-1">090-1234-5678</p>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">24時間対応</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Contact Form -->
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                        お問い合わせフォーム
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 mb-8">
+                        以下のフォームに必要事項をご記入ください。担当者より2営業日以内にご連絡いたします。
+                    </p>
+
+                    <form id="contactForm" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="companyName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    会社名 <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="companyName" name="companyName" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="department" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    部署名
+                                </label>
+                                <input type="text" id="department" name="department" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="contactPerson" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    ご担当者名 <span class="text-red-500">*</span>
+                                </label>
+                                <input type="text" id="contactPerson" name="contactPerson" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    役職
+                                </label>
+                                <input type="text" id="title" name="title" class="form-input">
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    メールアドレス <span class="text-red-500">*</span>
+                                </label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    電話番号 <span class="text-red-500">*</span>
+                                </label>
+                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="inquiryType" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                お問い合わせ種別 <span class="text-red-500">*</span>
+                            </label>
+                            <select id="inquiryType" name="inquiryType" class="form-input" required>
+                                <option value="">選択してください</option>
+                                <option value="estimate">お見積もり依頼</option>
+                                <option value="booking">予約・手配</option>
+                                <option value="tracking">貨物追跡</option>
+                                <option value="service">サービスについて</option>
+                                <option value="complaint">クレーム</option>
+                                <option value="other">その他</option>
+                            </select>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="origin" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    出発地
+                                </label>
+                                <input type="text" id="origin" name="origin" class="form-input" placeholder="例: 東京港">
+                            </div>
+                            <div>
+                                <label for="destination" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    目的地
+                                </label>
+                                <input type="text" id="destination" name="destination" class="form-input" placeholder="例: 上海港">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="cargoInfo" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                貨物情報
+                            </label>
+                            <textarea id="cargoInfo" name="cargoInfo" class="form-input form-textarea" placeholder="貨物の種類、サイズ、重量など"></textarea>
+                        </div>
+
+                        <div>
+                            <label for="preferredDate" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                希望連絡日時
+                            </label>
+                            <input type="datetime-local" id="preferredDate" name="preferredDate" class="form-input">
+                        </div>
+
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                お問い合わせ内容 <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="message" name="message" class="form-input form-textarea" rows="5" required placeholder="具体的なお問い合わせ内容をご記入ください"></textarea>
+                        </div>
+
+                        <div class="flex items-start">
+                            <input type="checkbox" id="privacyConsent" name="privacyConsent" class="mt-1 mr-3" required>
+                            <label for="privacyConsent" class="text-sm text-gray-600 dark:text-gray-400">
+                                <a href="#" class="text-primary-600 hover:text-primary-800">プライバシーポリシー</a>に同意します
+                            </label>
+                        </div>
+
+                        <div class="flex gap-4">
+                            <button type="button" onclick="resetForm()" class="btn-secondary flex-1">
+                                リセット
+                            </button>
+                            <button type="submit" class="btn-primary flex-1">
+                                送信する
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Office Information -->
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-6">
+                        営業所案内
+                    </h2>
+                    
+                    <!-- Tokyo Office -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">本社（東京）</h3>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 mb-4">
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">住所</p>
+                                        <p class="text-gray-600 dark:text-gray-400">〒100-0013<br>東京都千代田区霞が関3-2-1<br>共同ゲート西館33階</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">電話</p>
+                                        <p class="text-gray-600 dark:text-gray-400">03-3593-6000</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">FAX</p>
+                                        <p class="text-gray-600 dark:text-gray-400">03-3593-6001</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">営業時間</p>
+                                        <p class="text-gray-600 dark:text-gray-400">平日 9:00-18:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="showMap('tokyo')" class="btn-secondary w-full">
+                            地図を表示
+                        </button>
+                    </div>
+
+                    <!-- Kyushu Office -->
+                    <div class="mb-8">
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-4">九州支店</h3>
+                        <div class="bg-white dark:bg-gray-800 rounded-lg p-6 mb-4">
+                            <div class="space-y-3">
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">住所</p>
+                                        <p class="text-gray-600 dark:text-gray-400">〒810-0001<br>福岡県福岡市博多区博多駅前2-8-1<br>博多駅前ビルディング8階</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">電話</p>
+                                        <p class="text-gray-600 dark:text-gray-400">092-433-5600</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">FAX</p>
+                                        <p class="text-gray-600 dark:text-gray-400">092-433-5601</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <svg class="w-5 h-5 text-primary-600 mt-1 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                    </svg>
+                                    <div>
+                                        <p class="font-medium text-gray-900 dark:text-white">営業時間</p>
+                                        <p class="text-gray-600 dark:text-gray-400">平日 9:00-18:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button onclick="showMap('kyushu')" class="btn-secondary w-full">
+                            地図を表示
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+                    よくある質問
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    お客様からよくいただく質問をまとめました
+                </p>
+            </div>
+
+            <div class="space-y-4 animate-on-scroll">
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <span>Q. お見積もりは無料ですか？</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer" id="faq-1">
+                        <p>A. はい、お見積もりは完全に無料です。お気軽にご依頼ください。通常2営業日以内にご提案させていただきます。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <span>Q. 輸送時間はどのくらいですか？</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer" id="faq-2">
+                        <p>A. 航路により異なりますが、日本-中国間は2-4日、日本-欧州間は25-35日、日本-北米間は12-18日が目安です。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <span>Q. 危険物も輸送可能ですか？</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer" id="faq-3">
+                        <p>A. はい、IMDGコードに基づく危険物の輸送も可能です。専門スタッフが対応させていただきます。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(4)">
+                        <span>Q. 貨物保険は必要ですか？</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer" id="faq-4">
+                        <p>A. 海上保険への加入をお勧めしています。万が一の事故に備え、お客様の貴重な貨物を保護します。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(5)">
+                        <span>Q. 通関手続きは代行してもらえますか？</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer" id="faq-5">
+                        <p>A. はい、通関手続きの代行も行っております。専門の通関士が迅速かつ確実に手続きいたします。</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question" onclick="toggleFAQ(6)">
+                        <span>Q. 決済方法はどのようなものがありますか？</span>
+                        <svg class="w-5 h-5 faq-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-answer" id="faq-6">
+                        <p>A. 銀行振込、小切手、信用状（L/C）など、お客様のご要望に合わせて柔軟に対応させていただきます。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Modal -->
+    <div id="mapModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-4xl w-full mx-4 max-h-[80vh] overflow-hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="mapTitle" class="text-xl font-bold text-gray-900 dark:text-white">地図</h3>
+                <button onclick="closeMap()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="map" class="map-container"></div>
+        </div>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget">
+        <div class="chat-popup" id="chatPopup">
+            <div class="chat-header">
+                <h4 class="font-bold">オンライン相談</h4>
+                <button onclick="toggleChat()" class="text-white hover:text-gray-200">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="chat-body" id="chatBody">
+                <div class="mb-4">
+                    <div class="bg-primary-100 dark:bg-primary-900 rounded-lg p-3 mb-2">
+                        <p class="text-sm">こんにちは！COSCO SHIPPING LOGISTICSのオンライン相談窓口です。</p>
+                    </div>
+                    <div class="bg-primary-100 dark:bg-primary-900 rounded-lg p-3">
+                        <p class="text-sm">お見積もり、サービスについてのご質問など、お気軽にお問い合わせください。</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="chatInput" class="form-input flex-1" placeholder="メッセージを入力...">
+                <button onclick="sendMessage()" class="btn-primary px-4 py-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <button class="chat-button" onclick="toggleChat()">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">COSCO SHIPPING LOGISTICS</h3>
+                    <p class="text-gray-400 text-sm">
+                        中遠海運グループの日本法人として、国際物流ソリューションを提供しています。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="services.html" class="hover:text-white transition-colors">海上貨物輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">特別輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">複合輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">倉庫サービス</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">サポート</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">料金照会</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">貨物追跡</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">書類ダウンロード</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="company.html" class="hover:text-white transition-colors">会社概要</a></li>
+                        <li><a href="company.html" class="hover:text-white transition-colors">営業所案内</a></li>
+                        <li><a href="news.html" class="hover:text-white transition-colors">ニュース</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">採用情報</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 COSCO SHIPPING LOGISTICS (JAPAN) Co., Ltd. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+    
+    <!-- Contact JavaScript -->
+    <script>
+        let map;
+        
+        // Map functions
+        function showMap(location) {
+            const modal = document.getElementById('mapModal');
+            const title = document.getElementById('mapTitle');
+            
+            let coords, zoom, titleText;
+            
+            if (location === 'tokyo') {
+                coords = [35.6762, 139.7473];
+                zoom = 15;
+                titleText = '本社（東京） - 地図';
+            } else if (location === 'kyushu') {
+                coords = [33.5902, 130.4017];
+                zoom = 15;
+                titleText = '九州支店 - 地図';
+            }
+            
+            title.textContent = titleText;
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                if (map) {
+                    map.remove();
+                }
+                
+                map = L.map('map').setView(coords, zoom);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+                
+                L.marker(coords).addTo(map)
+                    .bindPopup(location === 'tokyo' ? 
+                        'COSCO SHIPPING LOGISTICS (JAPAN)<br>本社（東京）' : 
+                        'COSCO SHIPPING LOGISTICS (JAPAN)<br>九州支店')
+                    .openPopup();
+            }, 100);
+        }
+        
+        function closeMap() {
+            const modal = document.getElementById('mapModal');
+            modal.classList.add('hidden');
+            if (map) {
+                map.remove();
+                map = null;
+            }
+        }
+
+        // FAQ functions
+        function toggleFAQ(id) {
+            const answer = document.getElementById(`faq-${id}`);
+            const icon = document.querySelector(`[onclick="toggleFAQ(${id})"] .faq-icon`);
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.classList.remove('active');
+            } else {
+                // Close all other FAQs
+                document.querySelectorAll('.faq-answer').forEach(el => {
+                    el.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-icon').forEach(el => {
+                    el.classList.remove('active');
+                });
+                
+                // Open current FAQ
+                answer.classList.add('active');
+                icon.classList.add('active');
+            }
+        }
+
+        // Form functions
+        function resetForm() {
+            document.getElementById('contactForm').reset();
+        }
+
+        // Chat functions
+        function toggleChat() {
+            const popup = document.getElementById('chatPopup');
+            if (popup.style.display === 'flex') {
+                popup.style.display = 'none';
+            } else {
+                popup.style.display = 'flex';
+            }
+        }
+
+        function sendMessage() {
+            const input = document.getElementById('chatInput');
+            const message = input.value.trim();
+            
+            if (message) {
+                const chatBody = document.getElementById('chatBody');
+                
+                // Add user message
+                const userMessage = document.createElement('div');
+                userMessage.className = 'mb-4 text-right';
+                userMessage.innerHTML = `
+                    <div class="bg-primary-600 text-white rounded-lg p-3 inline-block max-w-xs">
+                        <p class="text-sm">${message}</p>
+                    </div>
+                `;
+                chatBody.appendChild(userMessage);
+                
+                // Add bot response (mock)
+                setTimeout(() => {
+                    const botMessage = document.createElement('div');
+                    botMessage.className = 'mb-4';
+                    botMessage.innerHTML = `
+                        <div class="bg-gray-100 dark:bg-gray-700 rounded-lg p-3 inline-block max-w-xs">
+                            <p class="text-sm">お問い合わせありがとうございます。専門スタッフが対応させていただきます。</p>
+                        </div>
+                    `;
+                    chatBody.appendChild(botMessage);
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 1000);
+                
+                input.value = '';
+                chatBody.scrollTop = chatBody.scrollHeight;
+            }
+        }
+
+        // Chat input enter key
+        document.getElementById('chatInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Show success message
+            const successMessage = document.createElement('div');
+            successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg z-50';
+            successMessage.textContent = 'お問い合わせを受け付けました。ありがとうございます。';
+            document.body.appendChild(successMessage);
+
+            anime({
+                targets: successMessage,
+                translateX: [300, 0],
+                opacity: [0, 1],
+                duration: 500,
+                easing: 'easeOutQuad',
+                complete: () => {
+                    setTimeout(() => {
+                        anime({
+                            targets: successMessage,
+                            translateX: [0, 300],
+                            opacity: [1, 0],
+                            duration: 500,
+                            easing: 'easeInQuad',
+                            complete: () => {
+                                successMessage.remove();
+                            }
+                        });
+                    }, 3000);
+                }
+            });
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Close modal on background click
+        document.getElementById('mapModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeMap();
+            }
+        });
+    </script>
+</body>
+</html>

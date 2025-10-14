@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ニュース - COSCO SHIPPING LOGISTICS (JAPAN)</title>
+    <meta name="description" content="COSCO SHIPPING LOGISTICS (JAPAN)の最新ニュース、会社情報、業界動態をお届けします。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --secondary-500: #64748b;
+            --accent-500: #f97316;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-600: #525252;
+            --gray-800: #262626;
+            --gray-900: #171717;
+        }
+
+        * {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        body {
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+        }
+
+        .dark {
+            background-color: var(--gray-900);
+            color: var(--gray-50);
+        }
+
+        .dark body {
+            background-color: var(--gray-900);
+            color: var(--gray-50);
+        }
+
+        .bg-primary-600 { background-color: var(--primary-600); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-800 { background-color: var(--primary-800); }
+        .bg-primary-900 { background-color: var(--primary-900); }
+        .bg-secondary-500 { background-color: var(--secondary-500); }
+        .bg-accent-500 { background-color: var(--accent-500); }
+        .bg-gray-50 { background-color: var(--gray-50); }
+        .bg-gray-100 { background-color: var(--gray-100); }
+        .bg-gray-200 { background-color: var(--gray-200); }
+        .bg-gray-800 { background-color: var(--gray-800); }
+        .bg-gray-900 { background-color: var(--gray-900); }
+
+        .text-primary-600 { color: var(--primary-600); }
+        .text-primary-700 { color: var(--primary-700); }
+        .text-primary-800 { color: var(--primary-800); }
+        .text-primary-900 { color: var(--primary-900); }
+        .text-secondary-500 { color: var(--secondary-500); }
+        .text-accent-500 { color: var(--accent-500); }
+        .text-gray-50 { color: var(--gray-50); }
+        .text-gray-100 { color: var(--gray-100); }
+        .text-gray-200 { color: var(--gray-200); }
+        .text-gray-600 { color: var(--gray-600); }
+        .text-gray-800 { color: var(--gray-800); }
+        .text-gray-900 { color: var(--gray-900); }
+
+        .border-primary-600 { border-color: var(--primary-600); }
+        .border-primary-700 { border-color: var(--primary-700); }
+        .border-gray-200 { border-color: var(--gray-200); }
+        .border-gray-300 { border-color: #d4d4d4; }
+        .border-gray-600 { border-color: var(--gray-600); }
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://kimi-web-img.moonshot.cn/img/www.brookesbell.com/3a56a018643bfaeecd76023d339625869bb9b4fa.jpg') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-600);
+            border: 2px solid var(--primary-600);
+            padding: 10px 22px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .news-filter {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .news-filter.active {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .news-item {
+            transition: all 0.3s ease;
+        }
+
+        .news-item.hidden {
+            display: none;
+        }
+
+        .news-detail {
+            display: none;
+        }
+
+        .news-detail.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark .news-card {
+            background: var(--gray-800);
+        }
+
+        .news-category {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .category-company {
+            background-color: #dbeafe;
+            color: #1e40af;
+        }
+
+        .category-industry {
+            background-color: #fef3c7;
+            color: #d97706;
+        }
+
+        .category-policy {
+            background-color: #d1fae5;
+            color: #059669;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 12px 16px 12px 48px;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background-color: white;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-600);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .dark .search-input {
+            background-color: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-50);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-500);
+        }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            margin-top: 2rem;
+        }
+
+        .pagination button {
+            padding: 8px 12px;
+            border: 1px solid var(--gray-300);
+            border-radius: 6px;
+            background: white;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .pagination button:hover {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .pagination button.active {
+            background: var(--primary-600);
+            color: white;
+            border-color: var(--primary-600);
+        }
+
+        .dark .pagination button {
+            background: var(--gray-800);
+            border-color: var(--gray-600);
+            color: var(--gray-200);
+        }
+
+        @media (max-width: 768px) {
+            .hero-bg {
+                min-height: 40vh;
+            }
+            
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold text-primary-800 dark:text-primary-200">
+                            COSCO SHIPPING LOGISTICS
+                        </h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">JAPAN</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="home">ホーム</span>
+                        </a>
+                        <a href="company.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="company">会社案内</span>
+                        </a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="services">サービス</span>
+                        </a>
+                        <a href="schedule.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="schedule">スケジュール</span>
+                        </a>
+                        <a href="news.html" class="text-primary-600 hover:text-primary-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600">
+                            <span data-i18n="news">ニュース</span>
+                        </a>
+                        <a href="contact.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="contact">お問い合わせ</span>
+                        </a>
+                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            採用情報
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Selector & Theme Toggle -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <select id="languageSelector" class="search-input text-sm py-1 px-2">
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                    
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="home">ホーム</span>
+                </a>
+                <a href="company.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="company">会社案内</span>
+                </a>
+                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="services">サービス</span>
+                </a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="schedule">スケジュール</span>
+                </a>
+                <a href="news.html" class="block px-3 py-2 text-primary-600 font-medium border-l-4 border-primary-600">
+                    <span data-i18n="news">ニュース</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="contact">お問い合わせ</span>
+                </a>
+                <a href="recruitment.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    採用情報
+                </a>
+            </div>
+            
+            <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                <select id="mobileLanguageSelector" class="search-input text-sm w-full">
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+                    ニュース
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                    COSCO SHIPPING LOGISTICSの最新情報をお届けします
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Search and Filter Section -->
+    <section class="py-12 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row gap-6 items-center justify-between mb-8">
+                <!-- Search Box -->
+                <div class="search-box flex-1 max-w-md">
+                    <div class="search-icon">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                        </svg>
+                    </div>
+                    <input type="text" id="newsSearch" class="search-input" placeholder="ニュースを検索...">
+                </div>
+
+                <!-- Filter Buttons -->
+                <div class="flex flex-wrap gap-2">
+                    <button class="news-filter active px-4 py-2 rounded-lg text-sm font-medium" data-category="all">
+                        すべて
+                    </button>
+                    <button class="news-filter px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400" data-category="company">
+                        会社ニュース
+                    </button>
+                    <button class="news-filter px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400" data-category="industry">
+                        業界動向
+                    </button>
+                    <button class="news-filter px-4 py-2 rounded-lg text-sm font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400" data-category="policy">
+                        政策・規制
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- News List Section -->
+    <section class="py-12 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- News Grid -->
+            <div id="newsList" class="news-grid">
+                <!-- News Item 1 -->
+                <article class="news-item animate-on-scroll" data-category="company">
+                    <div class="news-card">
+                        <div class="relative">
+                            <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/a14ad6d80a9bd190fab1f7227d9aa2a19bbbfc92.jpg" alt="日本発上海・太倉・連雲港経由 準定期在来船スケジュール" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="news-category category-company">会社ニュース</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="text-white hover:text-gray-200 transition-colors" onclick="shareNews(1)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2025年9月28日</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                日本発上海・太倉・連雲港経由 準定期在来船スケジュール
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                アジア地域への新たな海上ルートを開設し、輸送時間を大幅短縮しました。
+                                日本の主要港から中国の主要港まで、より迅速な輸送サービスを提供開始。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button onclick="showNewsDetail(1)" class="text-primary-600 hover:text-primary-800 font-medium">
+                                    続きを読む →
+                                </button>
+                                <div class="text-sm text-gray-500">5分で読める</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- News Item 2 -->
+                <article class="news-item animate-on-scroll" data-category="policy">
+                    <div class="news-card">
+                        <div class="relative">
+                            <img src="https://kimi-web-img.moonshot.cn/img/cloudfront-us-east-1.images.arcpublishing.com/08e4d5272fae7a0161f7fab7fdf466a21bcdf224.jpg" alt="BOOKING CANCELLATION AMND FEE改定について" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="news-category category-policy">政策・規制</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="text-white hover:text-gray-200 transition-colors" onclick="shareNews(2)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2025年8月15日</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                BOOKING CANCELLATION AMND FEE改定について
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                キャンセル料金体系の見直しにより、お客様へのサービス向上を実現。
+                                柔軟な料金体系で、急な計画変更にも対応しやすくなりました。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button onclick="showNewsDetail(2)" class="text-primary-600 hover:text-primary-800 font-medium">
+                                    続きを読む →
+                                </button>
+                                <div class="text-sm text-gray-500">3分で読める</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- News Item 3 -->
+                <article class="news-item animate-on-scroll" data-category="company">
+                    <div class="news-card">
+                        <div class="relative">
+                            <img src="https://kimi-web-img.moonshot.cn/img/wpassets.porttechnology.org/69584824648512dda41826ac2f8e29a92618b8cb.jpg" alt="2024.11.14開港！アジア南米一帯一路' CHANCAY PORT PERU" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="news-category category-company">会社ニュース</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="text-white hover:text-gray-200 transition-colors" onclick="shareNews(3)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2025年7月30日</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                2024.11.14開港！アジア南米一帯一路' CHANCAY PORT PERU
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                ペルー・チャンカイ港の開港により、南米市場への新たなゲートウェイを確立。
+                                一帯一路構想の重要拠点として、日中間の貿易を促進します。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button onclick="showNewsDetail(3)" class="text-primary-600 hover:text-primary-800 font-medium">
+                                    続きを読む →
+                                </button>
+                                <div class="text-sm text-gray-500">7分で読める</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- News Item 4 -->
+                <article class="news-item animate-on-scroll" data-category="industry">
+                    <div class="news-card">
+                        <div class="relative">
+                            <img src="https://kimi-web-img.moonshot.cn/img/static.vecteezy.com/59c1d13d1409ff2e0b86514ec86eacd6d8cddb41.jpg" alt="ご存じですか？アジアに一番近いEUへのGATEWAY ピレウス港編" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="news-category category-industry">業界動向</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="text-white hover:text-gray-200 transition-colors" onclick="shareNews(4)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2025年6月20日</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                ご存じですか？アジアに一番近いEUへのGATEWAY ピレウス港編
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                ギリシャ・ピレウス港を拠点とした欧州向け新ルートのご紹介。
+                                アジアから最も近い欧州のゲートウェイとして、輸送時間を大幅に短縮します。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button onclick="showNewsDetail(4)" class="text-primary-600 hover:text-primary-800 font-medium">
+                                    続きを読む →
+                                </button>
+                                <div class="text-sm text-gray-500">6分で読める</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- News Item 5 -->
+                <article class="news-item animate-on-scroll" data-category="company">
+                    <div class="news-card">
+                        <div class="relative">
+                            <img src="https://kimi-web-img.moonshot.cn/img/www.ship-technology.com/2c63667af66eeb5b695c5cee3d7c66f825381b78.jpg" alt="グループ紹介:COSCO SHIPPING AIRFREIGHT SHANGHAI" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="news-category category-company">会社ニュース</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="text-white hover:text-gray-200 transition-colors" onclick="shareNews(5)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2025年5月10日</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                グループ紹介:COSCO SHIPPING AIRFREIGHT SHANGHAI
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                上海航空貨物部門の新体制とサービス拡充のお知らせ。
+                                航空貨物サービスの強化により、より迅速な輸送ソリューションを提供します。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button onclick="showNewsDetail(5)" class="text-primary-600 hover:text-primary-800 font-medium">
+                                    続きを読む →
+                                </button>
+                                <div class="text-sm text-gray-500">4分で読める</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- News Item 6 -->
+                <article class="news-item animate-on-scroll" data-category="industry">
+                    <div class="news-card">
+                        <div class="relative">
+                            <img src="https://kimi-web-img.moonshot.cn/img/digitalsenior.sg/2f9b96d619b27e04a513f96407747625c71eafce.jpg" alt="一帯一路 連雲港・青島経由 中央アジア 欧州鉄道輸送" class="w-full h-48 object-cover">
+                            <div class="absolute top-4 left-4">
+                                <span class="news-category category-industry">業界動向</span>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <button class="text-white hover:text-gray-200 transition-colors" onclick="shareNews(6)">
+                                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">2025年4月25日</div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                                一帯一路 連雲港・青島経由 中央アジア 欧州鉄道輸送
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
+                                中国経由の新欧州鉄道輸送サービスで、より速く、より確実な輸送を実現。
+                                一帯一路構想に沿った、環境に優しい輸送ソリューションです。
+                            </p>
+                            <div class="flex justify-between items-center">
+                                <button onclick="showNewsDetail(6)" class="text-primary-600 hover:text-primary-800 font-medium">
+                                    続きを読む →
+                                </button>
+                                <div class="text-sm text-gray-500">8分で読める</div>
+                            </div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination">
+                <button onclick="changePage(1)" class="active">1</button>
+                <button onclick="changePage(2)">2</button>
+                <button onclick="changePage(3)">3</button>
+                <button onclick="changePage(4)">4</button>
+                <button onclick="changePage(5)">5</button>
+                <button onclick="changePage('next')">次へ →</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- News Detail Modal -->
+    <div id="newsDetailModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white dark:bg-gray-800 rounded-2xl p-8 max-w-4xl w-full mx-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <div class="flex items-center gap-4">
+                    <button onclick="closeNewsDetail()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+                        </svg>
+                    </button>
+                    <h3 id="newsDetailTitle" class="text-2xl font-bold text-gray-900 dark:text-white">ニュース詳細</h3>
+                </div>
+                <div class="flex items-center gap-4">
+                    <button onclick="shareNewsDetail()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.367 2.684 3 3 0 00-5.367-2.684z"></path>
+                        </svg>
+                    </button>
+                    <button onclick="printNews()" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div id="newsDetailContent" class="prose dark:prose-invert max-w-none">
+                <!-- News content will be loaded here -->
+            </div>
+            
+            <div class="border-t border-gray-200 dark:border-gray-700 mt-8 pt-6">
+                <div class="flex justify-between items-center">
+                    <div class="text-sm text-gray-500">
+                        投稿日: <span id="newsDetailDate">2025年9月28日</span>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <button onclick="relatedNews()" class="text-primary-600 hover:text-primary-800 font-medium">
+                            関連記事を見る
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">COSCO SHIPPING LOGISTICS</h3>
+                    <p class="text-gray-400 text-sm">
+                        中遠海運グループの日本法人として、国際物流ソリューションを提供しています。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="services.html" class="hover:text-white transition-colors">海上貨物輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">特別輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">複合輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">倉庫サービス</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">サポート</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">料金照会</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">貨物追跡</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">書類ダウンロード</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="company.html" class="hover:text-white transition-colors">会社概要</a></li>
+                        <li><a href="company.html" class="hover:text-white transition-colors">営業所案内</a></li>
+                        <li><a href="news.html" class="hover:text-white transition-colors">ニュース</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">採用情報</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 COSCO SHIPPING LOGISTICS (JAPAN) Co., Ltd. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+    
+    <!-- News JavaScript -->
+    <script>
+        // News data
+        const newsData = {
+            1: {
+                title: '日本発上海・太倉・連雲港経由 準定期在来船スケジュール',
+                date: '2025年9月28日',
+                category: '会社ニュース',
+                content: `
+                    <h2>新航路開設のお知らせ</h2>
+                    <p>COSCO SHIPPING LOGISTICS（JAPAN）は、2025年9月より新たな海上ルート「日本発上海・太倉・連雲港経由準定期在来船スケジュール」を開設いたします。</p>
+                    
+                    <h3>サービスの特徴</h3>
+                    <ul>
+                        <li>日本の主要港（東京、横浜、名古屋、大阪）から中国主要港までの定期サービス</li>
+                        <li>従来比30%の輸送時間短縮を実現</li>
+                        <li>週2回の定期運航で計画的な輸送が可能</li>
+                        <li>FCL/LCL両方のサービスを提供</li>
+                    </ul>
+                    
+                    <h3>運航スケジュール</h3>
+                    <p>東京港 → 横浜港 → 名古屋港 → 大阪港 → 上海港 → 太倉港 → 連雲港</p>
+                    <p>所要時間：約3-4日（天候により変動あり）</p>
+                    
+                    <h3>料金体系</h3>
+                    <p>競争力のある運賃を設定し、お客様のコスト削減に貢献します。詳細な料金については、営業担当までお問い合わせください。</p>
+                    
+                    <p>この新サービスにより、アジア地域との貿易をより円滑にし、お客様のビジネス拡大を支援いたします。</p>
+                `
+            },
+            2: {
+                title: 'BOOKING CANCELLATION AMND FEE改定について',
+                date: '2025年8月15日',
+                category: '政策・規制',
+                content: `
+                    <h2>キャンセル料金体系の見直し</h2>
+                    <p>平素より格別のご愛顧を賜り、厚く御礼申し上げます。</p>
+                    <p>このたび、当社のBOOKING CANCELLATION AMND FEE（予約キャンセル・変更手数料）を以下の通り改定いたします。</p>
+                    
+                    <h3>改定内容</h3>
+                    <ul>
+                        <li>キャンセル手数料の段階的な設定（出航日までの期間により異なる）</li>
+                        <li>変更手数料の統一化</li>
+                        <li>緊急時の特例措置の導入</li>
+                    </ul>
+                    
+                    <h3>新料金体系</h3>
+                    <p>出航30日前まで：無料</p>
+                    <p>出航29-15日前：基本運賃の10%</p>
+                    <p>出航14-7日前：基本運賃の25%</p>
+                    <p>出航6日前以降：基本運賃の50%</p>
+                    
+                    <h3>適用開始日</h3>
+                    <p>2025年10月1日より適用</p>
+                    
+                    <p>お客様にとってより柔軟で使いやすいサービスを目指し、継続的な改善に取り組んでまいります。</p>
+                `
+            },
+            3: {
+                title: '2024.11.14開港！アジア南米一帯一路' CHANCAY PORT PERU',
+                date: '2025年7月30日',
+                category: '会社ニュース',
+                content: `
+                    <h2>チャンカイ港開港のお知らせ</h2>
+                    <p>2024年11月14日、ペルー・チャンカイ港が正式に開港しました。</p>
+                    <p>この港は、一帯一路構想の重要な拠点として、南米とアジアを結ぶ新たなゲートウェイとなります。</p>
+                    
+                    <h3>チャンカイ港の特徴</h3>
+                    <ul>
+                        <li>年間処理能力100万TEUを超える大型コンテナターミナル</li>
+                        <li>最新の荷役設備を導入</li>
+                        <li>深喫水埠頭で大型コンテナ船も接岸可能</li>
+                        <li>周辺産業団地との連携体制</li>
+                    </ul>
+                    
+                    <h3>当社サービス</h3>
+                    <p>チャンカイ港を活用した新サービスを開始し、南米西海岸への輸送時間を大幅に短縮します。</p>
+                    
+                    <h3>経済的影響</h3>
+                    <p>この港の開港により、南米とアジア間の貿易がより活発化し、地域経済の発展に貢献することが期待されています。</p>
+                `
+            },
+            4: {
+                title: 'ご存じですか？アジアに一番近いEUへのGATEWAY ピレウス港編',
+                date: '2025年6月20日',
+                category: '業界動向',
+                content: `
+                    <h2>ピレウス港：アジアから最も近い欧州ゲートウェイ</h2>
+                    <p>ギリシャのピレウス港は、アジアから欧州への主要な物流拠点として注目されています。</p>
+                    
+                    <h3>地理的優位性</h3>
+                    <ul>
+                        <li>アジアからの距離が最短</li>
+                        <li>地中海の戦略的位置</li>
+                        <li>欧州主要都市への良好なアクセス</li>
+                    </ul>
+                    
+                    <h3>当社サービス</h3>
+                    <p>ピレウス港を活用した以下のサービスを提供しています：</p>
+                    <ul>
+                        <li>日本→ピレウス→欧州内陸の一貫輸送</li>
+                        <li>鉄道輸送との連携サービス</li>
+                        <li>保税区域での保管・加工サービス</li>
+                    </ul>
+                    
+                    <h3>輸送時間の短縮</h3>
+                    <p>従来ルートと比較して、欧州主要都市への輸送時間を最大40%短縮可能です。</p>
+                `
+            },
+            5: {
+                title: 'グループ紹介:COSCO SHIPPING AIRFREIGHT SHANGHAI',
+                date: '2025年5月10日',
+                category: '会社ニュース',
+                content: `
+                    <h2>COSCO SHIPPING AIRFREIGHT SHANGHAIについて</h2>
+                    <p>当社グループの航空貨物部門、COSCO SHIPPING AIRFREIGHT SHANGHAIのサービスをご紹介します。</p>
+                    
+                    <h3>サービス内容</h3>
+                    <ul>
+                        <li>国際航空貨物輸送</li>
+                        <li>ドア・トゥ・ドアサービス</li>
+                        <li>危険物輸送</li>
+                        <li>チャーター便手配</li>
+                    </ul>
+                    
+                    <h3>ネットワーク</h3>
+                    <p>世界主要空港との連携により、グローバルな航空貨物ネットワークを構築しています。</p>
+                    
+                    <h3>最新の取り組み</h3>
+                    <p>デジタル技術を活用した貨物追跡システムの導入により、リアルタイムで輸送状況を確認可能です。</p>
+                `
+            },
+            6: {
+                title: '一帯一路 連雲港・青島経由 中央アジア 欧州鉄道輸送',
+                date: '2025年4月25日',
+                category: '業界動向',
+                content: `
+                    <h2>新中欧鉄道輸送サービスの開始</h2>
+                    <p>中国の連雲港と青島を経由した、中央アジアおよび欧州向け鉄道輸送サービスを開始しました。</p>
+                    
+                    <h3>ルート概要</h3>
+                    <p>日本 → 中国（連雲港/青島）→ カザフスタン → ロシア → 欧州</p>
+                    
+                    <h3>サービスの特徴</h3>
+                    <ul>
+                        <li>海運と比較して輸送時間を約50%短縮</li>
+                        <li>週2回の定期運行</li>
+                        <li>環境に優しい輸送方法（CO2排出量30%削減）</li>
+                        <li>高い安全性と確実性</li>
+                    </ul>
+                    
+                    <h3>対応貨物</h3>
+                    <p>コンテナ貨物、バルク貨物、危険物など、様々な種類の貨物に対応可能です。</p>
+                    
+                    <h3>今後の展開</h3>
+                    <p>ルートの拡充とサービスの向上を図り、お客様にとってより魅力的な輸送オプションを提供してまいります。</p>
+                `
+            }
+        };
+
+        // Filter functionality
+        document.querySelectorAll('.news-filter').forEach(filter => {
+            filter.addEventListener('click', () => {
+                const category = filter.getAttribute('data-category');
+                
+                // Update filter styles
+                document.querySelectorAll('.news-filter').forEach(f => {
+                    f.classList.remove('active');
+                    f.classList.add('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+                });
+                
+                filter.classList.add('active');
+                filter.classList.remove('bg-gray-100', 'dark:bg-gray-800', 'text-gray-600', 'dark:text-gray-400');
+                
+                // Filter news items
+                document.querySelectorAll('.news-item').forEach(item => {
+                    if (category === 'all' || item.getAttribute('data-category') === category) {
+                        item.classList.remove('hidden');
+                    } else {
+                        item.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Search functionality
+        document.getElementById('newsSearch').addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            
+            document.querySelectorAll('.news-item').forEach(item => {
+                const title = item.querySelector('h3').textContent.toLowerCase();
+                const content = item.querySelector('p').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        });
+
+        // Show news detail
+        function showNewsDetail(id) {
+            const modal = document.getElementById('newsDetailModal');
+            const title = document.getElementById('newsDetailTitle');
+            const content = document.getElementById('newsDetailContent');
+            const date = document.getElementById('newsDetailDate');
+            
+            const news = newsData[id];
+            if (news) {
+                title.textContent = news.title;
+                content.innerHTML = news.content;
+                date.textContent = news.date;
+                
+                modal.classList.remove('hidden');
+                
+                // Animate modal
+                anime({
+                    targets: '.modal-content',
+                    scale: [0.8, 1],
+                    opacity: [0, 1],
+                    duration: 300,
+                    easing: 'easeOutQuad'
+                });
+            }
+        }
+
+        // Close news detail
+        function closeNewsDetail() {
+            const modal = document.getElementById('newsDetailModal');
+            anime({
+                targets: '.modal-content',
+                scale: [1, 0.8],
+                opacity: [1, 0],
+                duration: 200,
+                easing: 'easeInQuad',
+                complete: () => {
+                    modal.classList.add('hidden');
+                }
+            });
+        }
+
+        // Share news
+        function shareNews(id) {
+            if (navigator.share) {
+                navigator.share({
+                    title: newsData[id]?.title || 'COSCO SHIPPING LOGISTICS News',
+                    text: 'Check out this news from COSCO SHIPPING LOGISTICS',
+                    url: window.location.href
+                });
+            } else {
+                // Fallback for browsers that don't support Web Share API
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('リンクをコピーしました！');
+                });
+            }
+        }
+
+        // Share news detail
+        function shareNewsDetail() {
+            if (navigator.share) {
+                navigator.share({
+                    title: document.getElementById('newsDetailTitle').textContent,
+                    text: 'Check out this news from COSCO SHIPPING LOGISTICS',
+                    url: window.location.href
+                });
+            } else {
+                const url = window.location.href;
+                navigator.clipboard.writeText(url).then(() => {
+                    alert('リンクをコピーしました！');
+                });
+            }
+        }
+
+        // Print news
+        function printNews() {
+            window.print();
+        }
+
+        // Related news
+        function relatedNews() {
+            closeNewsDetail();
+            // Scroll to news section
+            document.querySelector('#newsList').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Pagination
+        function changePage(page) {
+            // Mock pagination - in real app, this would load new content
+            console.log('Changing to page:', page);
+            
+            // Update active page button
+            document.querySelectorAll('.pagination button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            if (typeof page === 'number') {
+                document.querySelector(`.pagination button:nth-child(${page})`).classList.add('active');
+            }
+        }
+
+        // Close modal on background click
+        document.getElementById('newsDetailModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeNewsDetail();
+            }
+        });
+    </script>
+</body>
+</html>

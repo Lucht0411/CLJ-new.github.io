@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>会社案内 - COSCO SHIPPING LOGISTICS (JAPAN)</title>
+    <meta name="description" content="COSCO SHIPPING LOGISTICS (JAPAN)の会社概要、事業内容、営業所情報、資格証明書などをご紹介します。">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;600;700&family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-800: #1e40af;
+            --primary-900: #1e3a8a;
+            --secondary-500: #64748b;
+            --accent-500: #f97316;
+            --gray-50: #fafafa;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-600: #525252;
+            --gray-800: #262626;
+            --gray-900: #171717;
+        }
+
+        * {
+            font-family: 'Noto Sans JP', sans-serif;
+        }
+
+        .font-serif {
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        body {
+            background-color: var(--gray-50);
+            color: var(--gray-900);
+        }
+
+        .dark {
+            background-color: var(--gray-900);
+            color: var(--gray-50);
+        }
+
+        .dark body {
+            background-color: var(--gray-900);
+            color: var(--gray-50);
+        }
+
+        .bg-primary-600 { background-color: var(--primary-600); }
+        .bg-primary-700 { background-color: var(--primary-700); }
+        .bg-primary-800 { background-color: var(--primary-800); }
+        .bg-primary-900 { background-color: var(--primary-900); }
+        .bg-secondary-500 { background-color: var(--secondary-500); }
+        .bg-accent-500 { background-color: var(--accent-500); }
+        .bg-gray-50 { background-color: var(--gray-50); }
+        .bg-gray-100 { background-color: var(--gray-100); }
+        .bg-gray-200 { background-color: var(--gray-200); }
+        .bg-gray-800 { background-color: var(--gray-800); }
+        .bg-gray-900 { background-color: var(--gray-900); }
+
+        .text-primary-600 { color: var(--primary-600); }
+        .text-primary-700 { color: var(--primary-700); }
+        .text-primary-800 { color: var(--primary-800); }
+        .text-primary-900 { color: var(--primary-900); }
+        .text-secondary-500 { color: var(--secondary-500); }
+        .text-accent-500 { color: var(--accent-500); }
+        .text-gray-50 { color: var(--gray-50); }
+        .text-gray-100 { color: var(--gray-100); }
+        .text-gray-200 { color: var(--gray-200); }
+        .text-gray-600 { color: var(--gray-600); }
+        .text-gray-800 { color: var(--gray-800); }
+        .text-gray-900 { color: var(--gray-900); }
+
+        .border-primary-600 { border-color: var(--primary-600); }
+        .border-primary-700 { border-color: var(--primary-700); }
+        .border-gray-200 { border-color: var(--gray-200); }
+        .border-gray-300 { border-color: #d4d4d4; }
+        .border-gray-600 { border-color: var(--gray-600); }
+
+        .hero-bg {
+            background: linear-gradient(135deg, var(--primary-900) 0%, var(--primary-700) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://kimi-web-img.moonshot.cn/img/www.oupot.com/6674effe0c24b98085c0d893c799a0a934d830e3.jpg') center/cover;
+            opacity: 0.2;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .btn-primary {
+            background-color: var(--primary-600);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-700);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-600);
+            border: 2px solid var(--primary-600);
+            padding: 10px 22px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-600);
+            color: white;
+        }
+
+        .timeline {
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary-600);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 1rem;
+            width: 12px;
+            height: 12px;
+            background: var(--accent-500);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .timeline-content {
+            width: 45%;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: 55%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-right: 55%;
+        }
+
+        .map-container {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .certificate-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .certificate-item {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .timeline::before {
+                left: 1rem;
+            }
+            
+            .timeline-item::before {
+                left: 1rem;
+            }
+            
+            .timeline-content {
+                width: calc(100% - 3rem);
+                margin-left: 3rem !important;
+                margin-right: 0 !important;
+            }
+            
+            .hero-bg {
+                min-height: 40vh;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white dark:bg-gray-900 shadow-lg sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-xl font-bold text-primary-800 dark:text-primary-200">
+                            COSCO SHIPPING LOGISTICS
+                        </h1>
+                        <p class="text-xs text-gray-600 dark:text-gray-400">JAPAN</p>
+                    </div>
+                </div>
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="home">ホーム</span>
+                        </a>
+                        <a href="company.html" class="text-primary-600 hover:text-primary-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600">
+                            <span data-i18n="company">会社案内</span>
+                        </a>
+                        <a href="services.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="services">サービス</span>
+                        </a>
+                        <a href="schedule.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="schedule">スケジュール</span>
+                        </a>
+                        <a href="news.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="news">ニュース</span>
+                        </a>
+                        <a href="contact.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            <span data-i18n="contact">お問い合わせ</span>
+                        </a>
+                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors">
+                            採用情報
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Language Selector & Theme Toggle -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <select id="languageSelector" class="form-input text-sm py-1 px-2">
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        <option value="en">English</option>
+                    </select>
+                    
+                    <button id="themeToggle" class="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500">
+                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="home">ホーム</span>
+                </a>
+                <a href="company.html" class="block px-3 py-2 text-primary-600 font-medium border-l-4 border-primary-600">
+                    <span data-i18n="company">会社案内</span>
+                </a>
+                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="services">サービス</span>
+                </a>
+                <a href="schedule.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="schedule">スケジュール</span>
+                </a>
+                <a href="news.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="news">ニュース</span>
+                </a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    <span data-i18n="contact">お問い合わせ</span>
+                </a>
+                <a href="recruitment.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    採用情報
+                </a>
+            </div>
+            
+            <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+                <select id="mobileLanguageSelector" class="form-input text-sm w-full">
+                    <option value="ja">日本語</option>
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg py-20">
+        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center text-white">
+                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
+                    会社案内
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
+                    COSCO SHIPPING LOGISTICS (JAPAN)は、中遠海運グループの一員として、
+                    世界に広がるネットワークでお客様のビジネスをサポートします
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Overview -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="animate-on-scroll">
+                    <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-6">
+                        会社概要
+                    </h2>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-primary-600 mb-3">企業理念</h3>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                「顧客第一、サービス至上」をモットーに、革新的な物流ソリューションを通じて、
+                                お客様のサプライチェーン最適化とビジネスの持続可能な発展に貢献します。
+                            </p>
+                        </div>
+                        
+                        <div class="bg-gray-50 dark:bg-gray-800 rounded-lg p-6">
+                            <h3 class="text-lg font-semibold text-primary-600 mb-3">事業内容</h3>
+                            <ul class="text-gray-600 dark:text-gray-400 space-y-2">
+                                <li>• 海上コンテナ輸送業務（FCL/LCL）</li>
+                                <li>• 特別貨物輸送（大型設備、重量物等）</li>
+                                <li>• 複合輸送サービス（海・陸・鉄道）</li>
+                                <li>• フォワーディング業務</li>
+                                <li>• 倉庫保管・流通加工サービス</li>
+                                <li>• 輸出入通関業務</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="animate-on-scroll">
+                    <div class="bg-primary-50 dark:bg-gray-800 rounded-2xl p-8">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">基本情報</h3>
+                        <div class="space-y-4">
+                            <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">会社名</span>
+                                <span class="text-gray-600 dark:text-gray-400">中遠海運物流ジャパン株式会社</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">英文社名</span>
+                                <span class="text-gray-600 dark:text-gray-400">COSCO SHIPPING Logistics (Japan) Co., Ltd.</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">設立</span>
+                                <span class="text-gray-600 dark:text-gray-400">2004年12月</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">資本金</span>
+                                <span class="text-gray-600 dark:text-gray-400">4,000万円</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3 border-b border-gray-200 dark:border-gray-700">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">従業員数</span>
+                                <span class="text-gray-600 dark:text-gray-400">100名</span>
+                            </div>
+                            <div class="flex justify-between items-center py-3">
+                                <span class="font-medium text-gray-700 dark:text-gray-300">代表者</span>
+                                <span class="text-gray-600 dark:text-gray-400">周 偉 (Zhou Wei)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company History Timeline -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+                    沿革
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    COSCO SHIPPING LOGISTICS (JAPAN)の歩み
+                </p>
+            </div>
+
+            <div class="timeline animate-on-scroll">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="text-accent-500 font-bold text-lg mb-2">2004年12月</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">会社設立</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            中遠海運グループの日本法人として、COSCO SHIPPING Lines (Japan) Co., Ltd.を設立。
+                            コンテナ船の日本総代理店業務を開始。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="text-accent-500 font-bold text-lg mb-2">2008年</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">サービス拡大</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            北米、欧州、東南アジア航路の拡充と、海陸複合輸送サービスの開始。
+                            九州支店を開設し、地域サービス体制を強化。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="text-accent-500 font-bold text-lg mb-2">2016年3月</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">グループ統合</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            中遠グループと中海グループの統合により、COSCO SHIPPING Linesとして新出発。
+                            世界最大級のコンテナ船会社としての地位を確立。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="text-accent-500 font-bold text-lg mb-2">2020年</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">デジタル化推進</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            デジタル技術を活用したサービス革新を推進。
+                            電子B/Lシステムの導入とオンライン予約システムの拡充。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="text-accent-500 font-bold text-lg mb-2">2024年</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">グリーン物流</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            環境配慮型物流サービスの展開。
+                            メタノール双燃料船の導入とバイオ燃料の積極的な活用。
+                        </p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <div class="text-accent-500 font-bold text-lg mb-2">2025年</div>
+                        <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-3">未来への挑戦</h3>
+                        <p class="text-gray-600 dark:text-gray-400">
+                            一帯一路沿線での鉄道輸送サービスの拡大。
+                            チャンカイ港（ペルー）の開港による南米市場への新たなゲートウェイ確立。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Office Locations -->
+    <section class="py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+                    営業所案内
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    全国主要拠点でサービスを提供しています
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Head Office -->
+                <div class="card-hover bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 animate-on-scroll">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-primary-600 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">本社（東京）</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Headquarter - Tokyo</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">住所</h4>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                〒100-0013<br>
+                                東京都千代田区霞が関3-2-1<br>
+                                共同ゲート西館33階
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">電話</h4>
+                                <p class="text-gray-600 dark:text-gray-400">03-3593-6000</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">FAX</h4>
+                                <p class="text-gray-600 dark:text-gray-400">03-3593-6001</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">営業時間</h4>
+                            <p class="text-gray-600 dark:text-gray-400">平日 9:00 - 18:00</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">最寄り駅</h4>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                東京メトロ銀座線「霞が関駅」11番出口直結<br>
+                                東京メトロ丸の内線・日比谷線「霞が関駅」徒歩3分
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary w-full" onclick="showMap('tokyo')">
+                        地図を表示
+                    </button>
+                </div>
+
+                <!-- Kyushu Branch -->
+                <div class="card-hover bg-gray-50 dark:bg-gray-800 rounded-2xl p-8 animate-on-scroll">
+                    <div class="flex items-center mb-6">
+                        <div class="w-12 h-12 bg-accent-500 rounded-lg flex items-center justify-center mr-4">
+                            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white">九州支店</h3>
+                            <p class="text-gray-600 dark:text-gray-400">Kyushu Branch</p>
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 mb-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">住所</h4>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                〒810-0001<br>
+                                福岡県福岡市博多区博多駅前2-8-1<br>
+                                博多駅前ビルディング8階
+                            </p>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">電話</h4>
+                                <p class="text-gray-600 dark:text-gray-400">092-433-5600</p>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">FAX</h4>
+                                <p class="text-gray-600 dark:text-gray-400">092-433-5601</p>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">営業時間</h4>
+                            <p class="text-gray-600 dark:text-gray-400">平日 9:00 - 18:00</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-700 dark:text-gray-300 mb-2">最寄り駅</h4>
+                            <p class="text-gray-600 dark:text-gray-400">
+                                JR九州「博多駅」博多口徒歩2分<br>
+                                福岡市営地下鉄空港線「博多駅」徒歩3分
+                            </p>
+                        </div>
+                    </div>
+
+                    <button class="btn-primary w-full" onclick="showMap('kyushu')">
+                        地図を表示
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
+                    資格証明書
+                </h2>
+                <p class="text-xl text-gray-600 dark:text-gray-400">
+                    お客様に安心してご利用いただけるよう、各種認証を取得しています
+                </p>
+            </div>
+
+            <div class="certificate-grid animate-on-scroll">
+                <div class="certificate-item">
+                    <div class="w-16 h-16 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">JIFFA会員証明書</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        日本国際フレightフォワーダー協会（JIFFA）の正会員として、
+                        国際的な基準に基づいた高品質な物流サービスを提供しています。
+                    </p>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                        登録番号: JIFFA-2024-001<br>
+                        有効期限: 2025年3月31日
+                    </div>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="w-16 h-16 bg-green-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">NVOCC経営資格</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        国土交通省より認可された無船承运業者（NVOCC）として、
+                        自社船を持たない貨物運送人としての資格を有しています。
+                    </p>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                        認可番号: NVOCC-2024-Tokyo-001<br>
+                        有効期限: 2025年3月31日
+                    </div>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="w-16 h-16 bg-purple-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">AEO認定</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        税関より認定された優良輸出者（AEO）として、
+                        輸出入における安全確保と迅速な通関手続きを実現しています。
+                    </p>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                        認定番号: AEO-JP-2024-001<br>
+                        有効期限: 2025年3月31日
+                    </div>
+                </div>
+
+                <div class="certificate-item">
+                    <div class="w-16 h-16 bg-red-600 rounded-lg flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">ISO9001認証</h3>
+                    <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">
+                        品質マネジメントシステム（ISO9001）の認証を取得。
+                        お客様に満足いただける高品質なサービスの継続的提供に努めています。
+                    </p>
+                    <div class="text-xs text-gray-500 dark:text-gray-400">
+                        認証番号: ISO9001-2024-001<br>
+                        有効期限: 2025年3月31日
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Modal -->
+    <div id="mapModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-4xl w-full mx-4 max-h-[80vh] overflow-hidden">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="mapTitle" class="text-xl font-bold text-gray-900 dark:text-white">地図</h3>
+                <button class="modal-close text-gray-500 hover:text-gray-700 dark:hover:text-gray-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="map" class="map-container"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">COSCO SHIPPING LOGISTICS</h3>
+                    <p class="text-gray-400 text-sm">
+                        中遠海運グループの日本法人として、国際物流ソリューションを提供しています。
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="services.html" class="hover:text-white transition-colors">海上貨物輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">特別輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">複合輸送</a></li>
+                        <li><a href="services.html" class="hover:text-white transition-colors">倉庫サービス</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">サポート</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">料金照会</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">貨物追跡</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">書類ダウンロード</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="company.html" class="hover:text-white transition-colors">会社概要</a></li>
+                        <li><a href="company.html" class="hover:text-white transition-colors">営業所案内</a></li>
+                        <li><a href="news.html" class="hover:text-white transition-colors">ニュース</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">採用情報</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © 2025 COSCO SHIPPING LOGISTICS (JAPAN) Co., Ltd. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    
+    <!-- Main JavaScript -->
+    <script src="main.js"></script>
+    
+    <!-- Map JavaScript -->
+    <script>
+        let map;
+        
+        function showMap(location) {
+            const modal = document.getElementById('mapModal');
+            const title = document.getElementById('mapTitle');
+            
+            let coords, zoom, titleText;
+            
+            if (location === 'tokyo') {
+                coords = [35.6762, 139.7473];
+                zoom = 15;
+                titleText = '本社（東京） - 地図';
+            } else if (location === 'kyushu') {
+                coords = [33.5902, 130.4017];
+                zoom = 15;
+                titleText = '九州支店 - 地図';
+            }
+            
+            title.textContent = titleText;
+            modal.classList.remove('hidden');
+            
+            setTimeout(() => {
+                if (map) {
+                    map.remove();
+                }
+                
+                map = L.map('map').setView(coords, zoom);
+                
+                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                    attribution: '© OpenStreetMap contributors'
+                }).addTo(map);
+                
+                L.marker(coords).addTo(map)
+                    .bindPopup(location === 'tokyo' ? 
+                        'COSCO SHIPPING LOGISTICS (JAPAN)<br>本社（東京）' : 
+                        'COSCO SHIPPING LOGISTICS (JAPAN)<br>九州支店')
+                    .openPopup();
+            }, 100);
+        }
+        
+        // Close modal event
+        document.querySelector('.modal-close').addEventListener('click', () => {
+            document.getElementById('mapModal').classList.add('hidden');
+            if (map) {
+                map.remove();
+                map = null;
+            }
+        });
+        
+        // Close modal on background click
+        document.getElementById('mapModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                document.getElementById('mapModal').classList.add('hidden');
+                if (map) {
+                    map.remove();
+                    map = null;
+                }
+            }
+        });
+    </script>
+</body>
+</html>
