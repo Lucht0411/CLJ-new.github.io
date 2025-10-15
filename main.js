@@ -292,21 +292,21 @@ class CoscoApp {
                 title: '新航路開設のお知らせ',
                 date: '2025-09-29',
                 summary: 'アジアと欧州間の新たなコンテナ航路を開設しました。週2便の定期サービスで、より速く、より効率的な輸送を実現。',
-                image: 'https://kimi-web-img.moonshot.cn/img/images.unsplash.com/photo-1544551763-46a013bb70d5',
+                image: 'https://kimi-web-img.moonshot.cn/img/static.vecteezy.com/59c1d13d1409ff2e0b86514ec86eacd6d8cddb41.jpg',
                 link: 'news.html'
             },
             {
                 title: 'デジタル化推進の新サービス',
                 date: '2025-09-28',
                 summary: 'AIを活用した貨物追跡システムを導入。リアルタイムでの位置情報確認と到着予測の精度が大幅に向上しました。',
-                image: 'https://kimi-web-img.moonshot.cn/img/images.unsplash.com/photo-1556742049-0cfed4f6a62d',
+                image: 'https://kimi-web-img.moonshot.cn/img/www.ship-technology.com/2c63667af66eeb5b695c5cee3d7c66f825381b78.jpg',
                 link: 'news.html'
             },
             {
                 title: '環境配慮型船舶の導入',
                 date: '2025-09-27',
                 summary: 'LNG燃料搭載の次世代環境配慮型コンテナ船を就航。CO2排出量を従来比40%削減した持続可能な輸送サービスを開始。',
-                image: 'https://kimi-web-img.moonshot.cn/img/images.unsplash.com/photo-1578662996442-48f60103fc96',
+                image: 'https://kimi-web-img.moonshot.cn/img/digitalsenior.sg/2f9b96d619b27e04a513f96407747625c71eafce.jpg',
                 link: 'news.html'
             }
         ];
@@ -322,9 +322,7 @@ class CoscoApp {
                         <div class="text-sm text-gray-500 dark:text-gray-400 mb-2">${news.date}</div>
                         <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-3">${news.title}</h3>
                         <p class="text-gray-600 dark:text-gray-400 text-sm mb-4">${news.summary}</p>
-                        <a href="${news.link}" class="text-primary-600 hover:text-primary-700 font-medium text-sm">
-                            続きを読む →
-                        </a>
+                        
                     </div>
                 </div>
             `;
@@ -613,6 +611,7 @@ class CoscoApp {
         // 登录模态框
         const loginBtn = document.getElementById('loginBtn');
         const mobileLoginBtn = document.getElementById('mobileLoginBtn');
+        const mobileLoginIconBtn = document.getElementById('mobileLoginIconBtn');
         
         if (loginBtn) {
             loginBtn.addEventListener('click', () => {
@@ -622,6 +621,12 @@ class CoscoApp {
         
         if (mobileLoginBtn) {
             mobileLoginBtn.addEventListener('click', () => {
+                this.showLoginModal();
+            });
+        }
+        
+        if (mobileLoginIconBtn) {
+            mobileLoginIconBtn.addEventListener('click', () => {
                 this.showLoginModal();
             });
         }
