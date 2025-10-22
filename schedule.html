@@ -264,40 +264,45 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo -->
                 <div class="flex items-center">
-                    <div class="flex-shrink-0">
-                        <h1 class="text-xl font-bold text-primary-800 dark:text-primary-200">
-                            COSCO SHIPPING LOGISTICS
-                        </h1>
-                        <p class="text-xs text-gray-600 dark:text-gray-400">JAPAN</p>
+                    <div class="flex-shrink-0 flex items-center">
+                        <!-- Logo Image - 进一步放大 -->
+                        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-14 w-auto mr-4"> <!-- 改为 h-14 -->
+                        <!-- Logo Text -->
+                        <div class="flex flex-col justify-center">
+                            <!-- 中远海运物流 - 进一步放大 -->
+                            <h1 class="text-3xl font-bold text-primary-800 dark:text-primary-600 leading-tight tracking-tight">
+                                中远海运物流
+                            </h1>
+                            <!-- COSCO SHIPPING LOGISTICS (JAPAN) - 精确对齐 -->
+                            <p class="text-xs text-gray-600 dark:text-gray-300 ml-10 mt-0.5"> <!-- ml-2 和 mt-0.5 微调位置 -->
+                                COSCO SHIPPING LOGISTICS (JAPAN)
+                            </p>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Desktop Navigation -->
                 <div class="hidden md:block flex-1">
                     <div class="ml-10 flex items-center justify-center space-x-1">
-                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                        <a href="index.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                             <span data-i18n="home">ホーム</span>
                         </a>
-                        <a href="company.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                        <a href="company.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                             <span data-i18n="company">会社案内</span>
                         </a>
-                        <a href="services.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
-                            <span data-i18n="services">サービス</span>
-                        </a>
-                        <a href="schedule.html" class="text-primary-600 hover:text-primary-800 px-2 py-2 rounded-md text-xs font-medium border-b-2 border-primary-600 transition-colors whitespace-nowrap">
+                        <a href="schedule.html" class="text-primary-600 hover:text-primary-800 px-3 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600 transition-colors whitespace-nowrap">
                             <span data-i18n="schedule">スケジュール</span>
                         </a>
-                      
-                        <a href="announcement.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                        <a href="announcement.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                             <span data-i18n="announcement">お知らせ</span>
                         </a>
-                        <a href="contact.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                        <a href="contact.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                             <span data-i18n="contact">お問い合わせ</span>
                         </a>
-                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                        <a href="recruitment.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                             <span data-i18n="recruitment">採用情報</span>
                         </a>
-                        <a href="downloads.html" class="text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-xs font-medium transition-colors whitespace-nowrap">
+                        <a href="downloads.html" class="text-gray-600 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors whitespace-nowrap">
                             <span data-i18n="downloads">ダウンロード</span>
                         </a>
                     </div>
@@ -343,13 +348,9 @@
                 <a href="company.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                     <span data-i18n="company">会社案内</span>
                 </a>
-                <a href="services.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
-                    <span data-i18n="services">サービス</span>
-                </a>
                 <a href="schedule.html" class="block px-3 py-2 text-primary-600 font-medium border-l-4 border-primary-600">
                     <span data-i18n="schedule">スケジュール</span>
                 </a>
-               
                 <a href="announcement.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                     <span data-i18n="announcement">お知らせ</span>
                 </a>
@@ -772,10 +773,10 @@
                 <div>
                     <h4 class="font-bold mb-4">サービス</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
-                        <li><a href="services.html" class="hover:text-white transition-colors">海上輸送</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">特別輸送</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">複合輸送</a></li>
-                        <li><a href="services.html" class="hover:text-white transition-colors">倉庫サービス</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">海上輸送</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">特別輸送</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">複合輸送</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">倉庫サービス</a></li>
                     </ul>
                 </div>
                 
