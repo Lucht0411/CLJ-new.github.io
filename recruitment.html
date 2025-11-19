@@ -213,41 +213,7 @@
             margin: 0 auto 1rem;
         }
 
-        .culture-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .culture-item {
-            position: relative;
-            border-radius: 12px;
-            overflow: hidden;
-            aspect-ratio: 4/3;
-        }
-
-        .culture-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .culture-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .culture-overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.7));
-            color: white;
-            padding: 1.5rem;
-        }
-
+  
         .form-input {
             width: 100%;
             padding: 12px 16px;
@@ -436,6 +402,9 @@
                             <a href="downloads.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
                                 ダウンロード
                             </a>
+                            <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                海外代理店専用
+                            </a>
                         </div>
                     </div>
 
@@ -462,6 +431,9 @@
                             </a>
                             <a href="downloads.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
                                 ダウンロード
+                            </a>
+                            <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                海外代理店専用
                             </a>
                         </div>
                     </div>
@@ -524,6 +496,9 @@
                 <a href="downloads.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
                     <span data-i18n="downloads">ダウンロード</span>
                 </a>
+                <a href="overseas-agents.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+                    海外代理店専用
+                </a>
             </div>
 
             <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
@@ -541,18 +516,7 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg py-20">
-        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center text-white">
-                <h1 class="text-4xl md:text-5xl font-serif font-bold mb-6">
-                    採用情報
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-200 max-w-3xl mx-auto">
-                    グローバル物流のリーダーと共に、世界を結ぶ新たな挑戦を始めませんか？
-                </p>
-            </div>
-        </div>
-    </section>
+    
 
     <!-- Message Section -->
     <section class="py-20 bg-white dark:bg-gray-900">
@@ -603,6 +567,54 @@
                     <p class="text-gray-600 dark:text-gray-400">
                         協力し合うチーム文化があり、経験豊富な先輩社員が丁寧に指導してくれます。
                     </p>
+                </div>
+            </div>
+
+            <!-- Activities Section -->
+            <div class="mt-16 animate-on-scroll">
+                <h3 class="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">社内活動とチームビルディング</h3>
+                <p class="text-center text-gray-600 dark:text-gray-400 mb-8">
+                    社員同士の交流を深め、一体感を育む様々な活動を定期的に開催しています。
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <!-- 年度総会 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="年度総会" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">年度総会・祝賀会</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">全社員が集まり、年間の功績を表彰し、今後の発展を誓います</p>
+                        </div>
+                    </div>
+
+                    <!-- チームビルディング -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="チームビルディング" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">チームビルディング</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">チームワーク向上のためのアクティビティやゲームを楽しんでいます</p>
+                        </div>
+                    </div>
+
+                    <!-- 研修会 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="研修会" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">スキルアップ研修</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">最新の物流動向や専門知識を学ぶ研修会を定期的に実施</p>
+                        </div>
+                    </div>
+
+                    <!-- ボランティア活動 -->
+                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="ボランティア活動" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h4 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">社会貢献活動</h4>
+                            <p class="text-sm text-gray-600 dark:text-gray-400">地域社会への貢献や環境保全活動に積極的に参加</p>
+                        </div>
+                    </div>
+                </div>
+                    
                 </div>
             </div>
         </div>
@@ -663,8 +675,8 @@
                     </p>
                     
                     <div class="flex flex-wrap gap-2 mb-6">
-                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">営業経験不問</span>
-                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">研修制度充実</span>
+                        <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded">各種保険</span>
+                        <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded">休暇制度</span>
                         <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded">キャリアアップ可能</span>
                     </div>
                     

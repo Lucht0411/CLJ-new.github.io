@@ -639,7 +639,7 @@ class CoscoApp {
         modal.innerHTML = `
             <div class="modal-content bg-white dark:bg-gray-900 rounded-lg p-8 max-w-md w-full mx-4">
                 <div class="flex justify-between items-center mb-6">
-                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">ログイン</h3>
+                    <h3 class="text-xl font-bold text-gray-900 dark:text-white">社員ログイン</h3>
                     <button class="close-modal text-gray-500 hover:text-gray-700">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -756,10 +756,95 @@ class CoscoApp {
         // 标签页切换
         const tabButtons = document.querySelectorAll('.tab-button');
         tabButtons.forEach(button => {
-            button.addEventListener('click', () => {
+            button.addEventListener('click', (event) => {
+                // 检查是否是東洋信号按钮（通过onclick属性判断）
+                if (button.getAttribute('onclick') && button.getAttribute('onclick').includes('toyoshingo.com')) {
+                    // 東洋信号按钮直接执行其onclick，不切换标签页
+                    return;
+                }
+
+                // 防止点击文件链接时触发标签页切换
+                if (event.target.closest('a[onclick*="window.open"]')) {
+                    return;
+                }
+
                 const tabName = button.getAttribute('data-tab');
-                this.switchTab(tabName);
+                if (tabName) {
+                    this.switchTab(tabName);
+                }
             });
+        });
+
+        // 添加reset按钮功能
+        const resetButton = document.getElementById('resetButton');
+        if (resetButton) {
+            resetButton.addEventListener('click', () => {
+                this.resetScheduleForm();
+            });
+        }
+    }
+
+    // 重置輸出LCLスケジュール搜索表单
+    resetScheduleForm() {
+        // 重置下拉框
+        const portOfReceipt = document.getElementById('portOfReceipt');
+        const portOfDischarging = document.getElementById('portOfDischarging');
+
+        if (portOfReceipt) {
+            portOfReceipt.value = '';
+        }
+
+        if (portOfDischarging) {
+            portOfDischarging.value = '';
+        }
+
+        // 重置搜索结果表格
+        const scheduleResults = document.getElementById('scheduleResults');
+        if (scheduleResults) {
+            scheduleResults.innerHTML = `
+                <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                    <thead class="bg-gray-50 dark:bg-gray-900">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                Vessel Name
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                Voyage
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                Place of Receipt
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                Port of Loading
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                Port of Discharging
+                            </th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                CFS Cut
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                        <tr>
+                            <td colspan="6" class="px-6 py-12 text-center text-gray-500">
+                                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                </svg>
+                                <p>検索条件を入力してスケジュールを検索してください</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // 添加重置动画效果
+        anime({
+            targets: '#scheduleSearchForm',
+            opacity: [0.5, 1],
+            duration: 300,
+            easing: 'easeOutQuad'
         });
     }
 

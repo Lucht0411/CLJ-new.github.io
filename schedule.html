@@ -361,6 +361,9 @@
                             <a href="downloads.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
                                 ダウンロード
                             </a>
+                            <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                海外代理店専用
+                            </a>
                         </div>
                     </div>
 
@@ -387,6 +390,9 @@
                             </a>
                             <a href="downloads.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
                                 ダウンロード
+                            </a>
+                            <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                海外代理店専用
                             </a>
                         </div>
                     </div>
@@ -449,6 +455,9 @@
         <a href="downloads.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
             <span data-i18n="downloads">ダウンロード</span>
         </a>
+        <a href="overseas-agents.html" class="block px-3 py-2 text-gray-600 hover:text-primary-600 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors">
+            海外代理店専用
+        </a>
     </div>
 
     <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
@@ -467,48 +476,38 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg py-20">
-        <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
-                    運航スケジュール
-                </h1>
-                <p class="text-xl md:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-                    リアルタイムの船期情報と貨物追跡サービスで、お客様のサプライチェーンを最適化します
-                </p>
-            </div>
-        </div>
-    </section>
+  
 
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <!-- Tab Navigation -->
         <div class="flex flex-wrap justify-center mb-8 bg-white dark:bg-gray-800 rounded-lg shadow-lg p-2">
             <button class="tab-button active" data-tab="schedule">
-                <span data-i18n="vessel-schedule">船期検索</span>
+                輸出LCLスケジュール
             </button>
             <button class="tab-button" data-tab="tracking">
-                <span data-i18n="cargo-tracking">貨物追跡</span>
+                在来船上海T/S
             </button>
-            <button class="tab-button" data-tab="ports">
-                <span data-i18n="port-info">港情報</span>
+            <button class="tab-button" onclick="event.preventDefault(); window.open('https://www.toyoshingo.com', '_blank')">
+                東洋信号
             </button>
         </div>
 
         <!-- Vessel Schedule Tab -->
         <div id="schedule-tab" class="tab-content active">
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div class="max-w-4xl mx-auto">
                 <!-- Search Form -->
-                <div class="lg:col-span-1">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                        <h3 class="text-xl font-bold mb-6 text-primary-600">
-                            <span data-i18n="search-schedule">運航スケジュール検索</span>
-                        </h3>
-                        
-                        <form id="scheduleSearchForm" class="space-y-4">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover mb-8">
+                    <h3 class="text-xl font-bold mb-6 text-primary-600">
+                        輸出LCLスケジュール検索
+                    </h3>
+
+                    <form id="scheduleSearchForm" class="space-y-4">
+                        <!-- First Row: Port of Receipt and Port of Discharging -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-sm font-medium mb-2" data-i18n="origin-port">出港港</label>
-                                <select id="originPort" class="form-input">
+                                <label class="block text-sm font-medium mb-2">Port of Receipt:</label>
+                                <select id="portOfReceipt" class="form-input">
                                     <option value="">選択してください</option>
                                     <option value="CNSHG">上海 (CNSHG)</option>
                                     <option value="CNSZX">深圳 (CNSZX)</option>
@@ -520,10 +519,10 @@
                                     <option value="HKHKG">香港 (HKHKG)</option>
                                 </select>
                             </div>
-                            
+
                             <div>
-                                <label class="block text-sm font-medium mb-2" data-i18n="destination-port">到着港</label>
-                                <select id="destinationPort" class="form-input">
+                                <label class="block text-sm font-medium mb-2">Port of Discharging:</label>
+                                <select id="portOfDischarging" class="form-input">
                                     <option value="">選択してください</option>
                                     <option value="USLAX">ロサンゼルス (USLAX)</option>
                                     <option value="USNYC">ニューヨーク (USNYC)</option>
@@ -535,44 +534,64 @@
                                     <option value="JPOSA">大阪 (JPOSA)</option>
                                 </select>
                             </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium mb-2" data-i18n="vessel-name">船名</label>
-                                <input type="text" id="vesselName" class="form-input" placeholder="船名を入力">
-                            </div>
-                            
-                            <div>
-                                <label class="block text-sm font-medium mb-2" data-i18n="departure-date">出港日</label>
-                                <input type="date" id="departureDate" class="form-input">
-                            </div>
-                            
-                            <button type="submit" class="btn-primary w-full">
-                                <span data-i18n="search">検索</span>
+                        </div>
+
+                        <!-- Second Row: Buttons (Right-aligned) -->
+                        <div class="flex justify-end space-x-3 pt-4">
+                            <button type="button" class="btn-secondary">
+                                DOWNLOAD EXCEL
                             </button>
-                        </form>
-                    </div>
+                            <button type="submit" class="btn-primary">
+                                SEARCH
+                            </button>
+                            <button type="button" class="btn-primary" id="resetButton">
+                                RESET
+                            </button>
+                        </div>
+                    </form>
                 </div>
 
-                <!-- Results -->
-                <div class="lg:col-span-2">
-                    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                        <div class="flex justify-between items-center mb-6">
-                            <h3 class="text-xl font-bold text-primary-600">
-                                <span data-i18n="search-results">検索結果</span>
-                            </h3>
-                            <button id="exportSchedule" class="btn-secondary text-sm">
-                                <span data-i18n="export">エクスポート</span>
-                            </button>
-                        </div>
-                        
-                        <div id="scheduleResults" class="overflow-x-auto">
-                            <div class="text-center py-12 text-gray-500">
-                                <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
-                                </svg>
-                                <p data-i18n="no-search-results">検索条件を入力してスケジュールを検索してください</p>
-                            </div>
-                        </div>
+                <!-- Results Table -->
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-6 text-primary-600">
+                        Search Results
+                    </h3>
+
+                    <div id="scheduleResults" class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+                            <thead class="bg-gray-50 dark:bg-gray-900">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Vessel Name
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Voyage
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Place of Receipt
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Port of Loading
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        Port of Discharging
+                                    </th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                        CFS Cut
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
+                                <tr>
+                                    <td colspan="6" class="px-6 py-12 text-center text-gray-500">
+                                        <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+                                        </svg>
+                                        <p>検索条件を入力してスケジュールを検索してください</p>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -580,257 +599,138 @@
 
         <!-- Cargo Tracking Tab -->
         <div id="tracking-tab" class="tab-content">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <!-- Tracking Form -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <h3 class="text-xl font-bold mb-6 text-primary-600">
-                        <span data-i18n="cargo-tracking">貨物追跡</span>
-                    </h3>
-                    
-                    <form id="trackingForm" class="space-y-4">
-                        <div>
-                            <label class="block text-sm font-medium mb-2" data-i18n="container-number">コンテナ番号</label>
-                            <input type="text" id="containerNumber" class="form-input" placeholder="例: COSU1234567">
-                            <p class="text-xs text-gray-500 mt-1" data-i18n="container-format">4文字のプレフィックス + 7桁の数字</p>
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium mb-2" data-i18n="booking-number">ブッキング番号</label>
-                            <input type="text" id="bookingNumber" class="form-input" placeholder="ブッキング番号を入力">
-                        </div>
-                        
-                        <div>
-                            <label class="block text-sm font-medium mb-2" data-i18n="bill-of-lading">B/L番号</label>
-                            <input type="text" id="billOfLading" class="form-input" placeholder="B/L番号を入力">
-                        </div>
-                        
-                        <button type="submit" class="btn-primary w-full">
-                            <span data-i18n="track">追跡</span>
-                        </button>
-                    </form>
-                    
-                    <div class="mt-6 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg">
-                        <h4 class="font-medium text-blue-800 dark:text-blue-200 mb-2">
-                            <span data-i18n="tracking-tips">追跡のヒント</span>
-                        </h4>
-                        <ul class="text-sm text-blue-600 dark:text-blue-400 space-y-1">
-                            <li data-i18n="tip-1">• コンテナ番号は通常、4文字のプレフィックスと7桁の数字で構成されます</li>
-                            <li data-i18n="tip-2">• 複数のコンテナを追跡する場合は、カンマで区切って入力してください</li>
-                            <li data-i18n="tip-3">• 追跡情報はリアルタイムで更新されます</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Tracking Results -->
+            <div class="max-w-4xl mx-auto">
+                <!-- File List -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
                     <h3 class="text-xl font-bold mb-6 text-primary-600">
-                        <span data-i18n="tracking-results">追跡結果</span>
+                        在来船上海T/S
                     </h3>
-                    
-                    <div id="trackingResults">
-                        <div class="text-center py-12 text-gray-500">
-                            <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                            </svg>
-                            <p data-i18n="enter-tracking-info">追跡情報を入力して貨物の状態を確認してください</p>
-                        </div>
+
+                    <div class="space-y-4">
+                        <!-- File 1 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        在来船上海航路時刻表_2025年11月
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年11月15日
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- File 2 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        在来船上海航路時刻表_2025年10月
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年10月20日
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- File 3 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        在来船上海T/Sサービス案内
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年10月1日
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- File 4 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        上海港コード・港湾情報
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年9月15日
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- File 5 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        在来船上海T/S手続きマニュアル
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年9月1日
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- File 6 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        上海港ターミナルマップ
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年8月20日
+                                </span>
+                            </div>
+                        </a>
+
+                        <!-- File 7 -->
+                        <a href="#" onclick="event.preventDefault(); return false;" class="block border-l-4 border-primary-600 pl-4 py-3 hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors cursor-pointer group">
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center space-x-3">
+                                    <svg class="w-5 h-5 text-primary-600 group-hover:text-primary-700 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path>
+                                    </svg>
+                                    <h4 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary-600 transition-colors">
+                                        在来船上海航路運航状況報告
+                                    </h4>
+                                </div>
+                                <span class="text-sm text-gray-500 dark:text-gray-400">
+                                    2025年8月10日
+                                </span>
+                            </div>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Port Information Tab -->
-        <div id="ports-tab" class="tab-content">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Port Cards -->
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">横浜港</h4>
-                            <p class="text-sm text-gray-500">Yokohama Port</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">コード:</span>
-                            <span>JPYOK</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">状態:</span>
-                            <span class="flex items-center">
-                                <span class="status-dot status-on-time"></span>
-                                正常
-                            </span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">混雑度:</span>
-                            <span>中等度</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">大阪港</h4>
-                            <p class="text-sm text-gray-500">Osaka Port</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">コード:</span>
-                            <span>JPOSA</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">状態:</span>
-                            <span class="flex items-center">
-                                <span class="status-dot status-on-time"></span>
-                                正常
-                            </span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">混雑度:</span>
-                            <span>低</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">神戸港</h4>
-                            <p class="text-sm text-gray-500">Kobe Port</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">コード:</span>
-                            <span>JPKOB</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">状態:</span>
-                            <span class="flex items-center">
-                                <span class="status-dot status-delayed"></span>
-                                遅延
-                            </span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">混雑度:</span>
-                            <span>高</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">上海港</h4>
-                            <p class="text-sm text-gray-500">Shanghai Port</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">コード:</span>
-                            <span>CNSHG</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">状態:</span>
-                            <span class="flex items-center">
-                                <span class="status-dot status-on-time"></span>
-                                正常
-                            </span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">混雑度:</span>
-                            <span>中等度</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">シンガポール港</h4>
-                            <p class="text-sm text-gray-500">Singapore Port</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">コード:</span>
-                            <span>SGSIN</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">状態:</span>
-                            <span class="flex items-center">
-                                <span class="status-dot status-on-time"></span>
-                                正常
-                            </span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">混雑度:</span>
-                            <span>低</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary-100 dark:bg-primary-900 rounded-lg flex items-center justify-center">
-                            <svg class="w-6 h-6 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
-                            </svg>
-                        </div>
-                        <div class="ml-4">
-                            <h4 class="font-bold text-lg">ロッテルダム港</h4>
-                            <p class="text-sm text-gray-500">Rotterdam Port</p>
-                        </div>
-                    </div>
-                    <div class="space-y-2 text-sm">
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">コード:</span>
-                            <span>NLRTM</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">状態:</span>
-                            <span class="flex items-center">
-                                <span class="status-dot status-arrived"></span>
-                                到着
-                            </span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-gray-600">混雑度:</span>
-                            <span>中等度</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </main>
+      </main>
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12">
