@@ -316,15 +316,15 @@
 <div class="flex items-center pl-4 sm:pl-6 lg:pl-8">
     <div class="flex-shrink-0 flex items-center">
         <!-- Logo Image -->
-        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-14 w-auto mr-4">
+        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-20 w-20 mr-6">
         <!-- Logo Text -->
         <div class="flex flex-col justify-center">
             <!-- 中远海运物流 -->
-            <h1 class="text-4xl font-black text-primary-800 dark:text-primary-600 leading-tight tracking-tight" style="font-family: 'SimSun', '宋体', 'Noto Serif SC', serif; font-weight: 900;">
+            <h1 class="text-4xl font-black leading-tight tracking-tight" style="font-family: 'Noto Serif SC', serif !important; font-weight: 900; color: #00508F;">
                 中远海运物流
             </h1>
-            <!-- COSCO SHIPPING LOGISTICS (JAPAN) -->
-            <p class="text-xs text-gray-600 dark:text-gray-300 ml-10 mt-0.5">
+            <!-- COSCO SHIPPING LOGISTICS (JAPAN) - 向上移动 -->
+            <p class="text-3xl text-base text-gray-400 ml-16 -mt-1 font-medium"> <!-- 添加 -mt-1 向上移动 -->
                 COSCO SHIPPING LOGISTICS (JAPAN)
             </p>
         </div>
@@ -495,7 +495,7 @@
 
         <!-- Vessel Schedule Tab -->
         <div id="schedule-tab" class="tab-content active">
-            <div class="max-w-4xl mx-auto">
+            <div class="w-full">
                 <!-- Search Form -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 card-hover mb-8">
                     <h3 class="text-xl font-bold mb-6 text-primary-600">
@@ -503,9 +503,9 @@
                     </h3>
 
                     <form id="scheduleSearchForm" class="space-y-4">
-                        <!-- First Row: Port of Receipt and Port of Discharging -->
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div>
+                        <!-- First Row: Port of Receipt and Port of Discharging in same line -->
+                        <div class="flex flex-col md:flex-row md:items-center gap-4">
+                            <div class="flex-1">
                                 <label class="block text-sm font-medium mb-2">Port of Receipt:</label>
                                 <select id="portOfReceipt" class="form-input">
                                     <option value="">選択してください</option>
@@ -520,7 +520,7 @@
                                 </select>
                             </div>
 
-                            <div>
+                            <div class="flex-1">
                                 <label class="block text-sm font-medium mb-2">Port of Discharging:</label>
                                 <select id="portOfDischarging" class="form-input">
                                     <option value="">選択してください</option>
@@ -551,9 +551,16 @@
                     </form>
                 </div>
 
+                <!-- Last updated timestamp between search box and results table -->
+                <div class="w-full px-6 py-3">
+                    <p class="text-sm text-gray-500 dark:text-gray-400">
+                        Last updated: 2025-11-19 10:30:25
+                    </p>
+                </div>
+
                 <!-- Results Table -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold mb-6 text-primary-600">
+                    <h3 class="text-xl font-bold text-primary-600 mb-6">
                         Search Results
                     </h3>
 
@@ -599,12 +606,17 @@
 
         <!-- Cargo Tracking Tab -->
         <div id="tracking-tab" class="tab-content">
-            <div class="max-w-4xl mx-auto">
+            <div class="w-full">
                 <!-- File List -->
                 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6">
-                    <h3 class="text-xl font-bold mb-6 text-primary-600">
-                        在来船上海T/S
-                    </h3>
+                    <div class="mb-6">
+                        <h3 class="text-xl font-bold text-primary-600 mb-2">
+                            在来船上海T/S
+                        </h3>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">
+                            Last updated: 2025-11-19 10:30:25
+                        </p>
+                    </div>
 
                     <div class="space-y-4">
                         <!-- File 1 -->

@@ -255,15 +255,15 @@
 <div class="flex items-center pl-4 sm:pl-6 lg:pl-8">
     <div class="flex-shrink-0 flex items-center">
         <!-- Logo Image -->
-        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-14 w-auto mr-4">
+        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-20 w-20 mr-6">
         <!-- Logo Text -->
         <div class="flex flex-col justify-center">
             <!-- 中远海运物流 -->
-            <h1 class="text-4xl font-black text-primary-800 dark:text-primary-600 leading-tight tracking-tight" style="font-family: 'SimSun', '宋体', 'Noto Serif SC', serif; font-weight: 900;">
+            <h1 class="text-4xl font-black leading-tight tracking-tight" style="font-family: 'Noto Serif SC', serif !important; font-weight: 900; color: #00508F;">
                 中远海运物流
             </h1>
-            <!-- COSCO SHIPPING LOGISTICS (JAPAN) -->
-            <p class="text-xs text-gray-600 dark:text-gray-300 ml-10 mt-0.5">
+            <!-- COSCO SHIPPING LOGISTICS (JAPAN) - 向上移动 -->
+            <p class="text-3xl text-base text-gray-400 ml-16 -mt-1 font-medium"> <!-- 添加 -mt-1 向上移动 -->
                 COSCO SHIPPING LOGISTICS (JAPAN)
             </p>
         </div>
@@ -445,10 +445,175 @@
                     </form>
 
                     <div class="mt-6 text-center">
+                        <button id="registerBtn" class="btn-secondary w-full mb-3">
+                            新規代理店登録
+                        </button>
                         <p class="text-sm text-gray-600 dark:text-gray-400">
                             ログインできない場合は管理者にお問い合わせください
                         </p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Registration Modal -->
+        <div id="registrationModal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+            <div class="modal-content bg-white dark:bg-gray-800 rounded-2xl shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden">
+                <div class="p-6 border-b border-gray-200 dark:border-gray-700">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-2xl font-bold text-gray-900 dark:text-white">
+                            新規代理店登録
+                        </h3>
+                        <button id="closeRegistrationModal" class="text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition-colors">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="p-6 overflow-y-auto max-h-[calc(90vh-8rem)]">
+                    <form id="registrationForm" class="space-y-6">
+                        <!-- Company Information -->
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-4">会社情報</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="regCompanyName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        会社名 *
+                                    </label>
+                                    <input type="text" id="regCompanyName" name="companyName" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="regCompanyCode" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        希望代理店コード *
+                                    </label>
+                                    <input type="text" id="regCompanyCode" name="companyCode" class="form-input" required placeholder="例: AGENT001">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Contact Information -->
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-4">連絡先情報</h4>
+                            <div class="space-y-4">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="regContactName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                            担当者名 *
+                                        </label>
+                                        <input type="text" id="regContactName" name="contactName" class="form-input" required>
+                                    </div>
+                                    <div>
+                                        <label for="regContactEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                            メールアドレス *
+                                        </label>
+                                        <input type="email" id="regContactEmail" name="contactEmail" class="form-input" required>
+                                    </div>
+                                </div>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="regContactPhone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                            電話番号 *
+                                        </label>
+                                        <input type="tel" id="regContactPhone" name="contactPhone" class="form-input" required>
+                                    </div>
+                                    <div>
+                                        <label for="regContactFax" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                            FAX番号
+                                        </label>
+                                        <input type="tel" id="regContactFax" name="contactFax" class="form-input">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Address Information -->
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-4">住所情報</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="regCountry" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        国名 *
+                                    </label>
+                                    <input type="text" id="regCountry" name="country" class="form-input" required>
+                                </div>
+                                <div>
+                                    <label for="regAddress" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                    住所 *
+                                    </label>
+                                    <textarea id="regAddress" name="address" class="form-input" rows="2" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business Information -->
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-4">事業情報</h4>
+                            <div class="space-y-4">
+                                <div>
+                                    <label for="regBusinessType" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        事業種別 *
+                                    </label>
+                                    <select id="regBusinessType" name="businessType" class="form-input" required>
+                                        <option value="">選択してください</option>
+                                        <option value="forwarding">フォワーダー</option>
+                                        <option value="consolidator">コンソリデーター</option>
+                                        <option value="customs">通関業者</option>
+                                        <option value="trading">商社</option>
+                                        <option value="manufacturing">メーカー</option>
+                                        <option value="other">その他</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="regBusinessDetails" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        事業内容詳細
+                                    </label>
+                                    <textarea id="regBusinessDetails" name="businessDetails" class="form-input" rows="3" placeholder="主な取引品目、サービス内容など"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Password Setup -->
+                        <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
+                            <h4 class="font-semibold text-gray-900 dark:text-white mb-4">パスワード設定</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="regPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        パスワード *
+                                    </label>
+                                    <input type="password" id="regPassword" name="password" class="form-input" required minlength="8">
+                                    <p class="text-xs text-gray-500 mt-1">8文字以上で設定してください</p>
+                                </div>
+                                <div>
+                                    <label for="regConfirmPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                                        パスワード確認 *
+                                    </label>
+                                    <input type="password" id="regConfirmPassword" name="confirmPassword" class="form-input" required minlength="8">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Terms and Conditions -->
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <input type="checkbox" id="agreeTerms" name="agreeTerms" class="mt-1 mr-3" required>
+                                <label for="agreeTerms" class="text-sm text-gray-600 dark:text-gray-400">
+                                    <a href="#" class="text-primary-600 hover:text-primary-800">利用規約</a>および<a href="#" class="text-primary-600 hover:text-primary-800">プライバシーポリシー</a>に同意します *
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="flex space-x-4">
+                            <button type="submit" class="agent-button flex-1">
+                                登録申請
+                            </button>
+                            <button type="button" id="cancelRegistration" class="btn-secondary flex-1">
+                                キャンセル
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -641,6 +806,127 @@
             console.log('JP-24 clicked:', type);
             alert(`JP-24 functionality for ${type} - Coming Soon!`);
         }
+
+        // Registration Modal Functionality
+        const registerBtn = document.getElementById('registerBtn');
+        const registrationModal = document.getElementById('registrationModal');
+        const closeRegistrationModal = document.getElementById('closeRegistrationModal');
+        const cancelRegistration = document.getElementById('cancelRegistration');
+        const registrationForm = document.getElementById('registrationForm');
+
+        // Open registration modal
+        registerBtn.addEventListener('click', function() {
+            registrationModal.classList.remove('hidden');
+            anime({
+                targets: '#registrationModal .modal-content',
+                opacity: [0, 1],
+                scale: [0.8, 1],
+                duration: 300,
+                easing: 'easeOutQuad'
+            });
+        });
+
+        // Close registration modal
+        function closeRegistrationModalFunc() {
+            anime({
+                targets: '#registrationModal .modal-content',
+                opacity: [1, 0],
+                scale: [1, 0.8],
+                duration: 300,
+                easing: 'easeInQuad',
+                complete: function() {
+                    registrationModal.classList.add('hidden');
+                    registrationForm.reset();
+                }
+            });
+        }
+
+        closeRegistrationModal.addEventListener('click', closeRegistrationModalFunc);
+        cancelRegistration.addEventListener('click', closeRegistrationModalFunc);
+
+        // Close modal when clicking outside
+        registrationModal.addEventListener('click', function(e) {
+            if (e.target === registrationModal) {
+                closeRegistrationModalFunc();
+            }
+        });
+
+        // Handle registration form submission
+        registrationForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Validate passwords match
+            const password = document.getElementById('regPassword').value;
+            const confirmPassword = document.getElementById('regConfirmPassword').value;
+
+            if (password !== confirmPassword) {
+                alert('パスワードが一致しません。再度ご確認ください。');
+                return;
+            }
+
+            // Get form data
+            const formData = {
+                companyName: document.getElementById('regCompanyName').value,
+                companyCode: document.getElementById('regCompanyCode').value,
+                contactName: document.getElementById('regContactName').value,
+                contactEmail: document.getElementById('regContactEmail').value,
+                contactPhone: document.getElementById('regContactPhone').value,
+                contactFax: document.getElementById('regContactFax').value,
+                country: document.getElementById('regCountry').value,
+                address: document.getElementById('regAddress').value,
+                businessType: document.getElementById('regBusinessType').value,
+                businessDetails: document.getElementById('regBusinessDetails').value,
+                password: password
+            };
+
+            // Simulate registration submission (in real implementation, this would be sent to server)
+            console.log('Registration data:', formData);
+
+            // Show success message
+            anime({
+                targets: '#registrationForm',
+                opacity: 0,
+                duration: 300,
+                easing: 'easeInQuad',
+                complete: function() {
+                    registrationForm.innerHTML = `
+                        <div class="text-center py-8">
+                            <div class="inline-flex items-center justify-center w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full mb-4">
+                                <svg class="w-8 h-8 text-green-600 dark:text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
+                                登録申請ありがとうございます
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4">
+                                申請内容を確認後、承認メールをお送りします。<br>
+                                通常3-5営業日かかります。
+                            </p>
+                            <p class="text-sm text-gray-500 dark:text-gray-500">
+                                お問い合わせ：info@cosco-logistics.jp
+                            </p>
+                        </div>
+                    `;
+
+                    anime({
+                        targets: '#registrationForm',
+                        opacity: [0, 1],
+                        duration: 300,
+                        easing: 'easeOutQuad'
+                    });
+
+                    // Close modal after 5 seconds
+                    setTimeout(() => {
+                        closeRegistrationModalFunc();
+                        // Reset form for next use
+                        setTimeout(() => {
+                            location.reload(); // Reload to restore original form
+                        }, 500);
+                    }, 5000);
+                }
+            });
+        });
     </script>
 </body>
 </html>

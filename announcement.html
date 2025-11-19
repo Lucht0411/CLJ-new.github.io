@@ -271,6 +271,11 @@
             color: var(--gray-200);
         }
 
+        #pageButtons {
+            display: flex;
+            gap: 8px;
+        }
+
         /* 响应式导航栏样式 */
 
         /* 确保所有屏幕下单行显示 */
@@ -337,15 +342,15 @@
 <div class="flex items-center pl-4 sm:pl-6 lg:pl-8">
     <div class="flex-shrink-0 flex items-center">
         <!-- Logo Image -->
-        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-14 w-auto mr-4">
+        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-20 w-20 mr-6">
         <!-- Logo Text -->
         <div class="flex flex-col justify-center">
             <!-- 中远海运物流 -->
-            <h1 class="text-4xl font-black text-primary-800 dark:text-primary-600 leading-tight tracking-tight" style="font-family: 'SimSun', '宋体', 'Noto Serif SC', serif; font-weight: 900;">
+            <h1 class="text-4xl font-black leading-tight tracking-tight" style="font-family: 'Noto Serif SC', serif !important; font-weight: 900; color: #00508F;">
                 中远海运物流
             </h1>
-            <!-- COSCO SHIPPING LOGISTICS (JAPAN) -->
-            <p class="text-xs text-gray-600 dark:text-gray-300 ml-10 mt-0.5">
+            <!-- COSCO SHIPPING LOGISTICS (JAPAN) - 向上移动 -->
+            <p class="text-3xl text-base text-gray-400 ml-16 -mt-1 font-medium"> <!-- 添加 -mt-1 向上移动 -->
                 COSCO SHIPPING LOGISTICS (JAPAN)
             </p>
         </div>
@@ -571,11 +576,9 @@
             </div>
 
             <!-- Pagination -->
-            <div class="pagination">
+            <div class="pagination" id="paginationContainer">
                 <button id="prevPage" class="disabled">前へ</button>
-                <button class="active">1</button>
-                <button>2</button>
-                <button>3</button>
+                <div id="pageButtons"></div>
                 <button id="nextPage">次へ</button>
             </div>
         </div>
@@ -638,11 +641,30 @@
             const announcements = document.querySelectorAll('.announcement-card');
             const prevBtn = document.getElementById('prevPage');
             const nextBtn = document.getElementById('nextPage');
-            const pageButtons = document.querySelectorAll('.pagination button:not(#prevPage):not(#nextPage)');
+            const pageButtonsContainer = document.getElementById('pageButtons');
 
             let currentPage = 1;
             const itemsPerPage = 5;
             const totalPages = Math.ceil(announcements.length / itemsPerPage);
+
+            // Generate page buttons dynamically
+            function generatePageButtons() {
+                pageButtonsContainer.innerHTML = '';
+
+                for (let i = 1; i <= totalPages; i++) {
+                    const button = document.createElement('button');
+                    button.textContent = i;
+                    button.addEventListener('click', () => {
+                        showPage(i);
+                    });
+
+                    if (i === 1) {
+                        button.classList.add('active');
+                    }
+
+                    pageButtonsContainer.appendChild(button);
+                }
+            }
 
             function showPage(page) {
                 const startIndex = (page - 1) * itemsPerPage;
@@ -657,6 +679,7 @@
                 });
 
                 // Update page buttons
+                const pageButtons = pageButtonsContainer.querySelectorAll('button');
                 pageButtons.forEach((btn, index) => {
                     if (index + 1 === page) {
                         btn.classList.add('active');
@@ -672,13 +695,6 @@
                 currentPage = page;
             }
 
-            // Page button clicks
-            pageButtons.forEach((btn, index) => {
-                btn.addEventListener('click', () => {
-                    showPage(index + 1);
-                });
-            });
-
             // Prev/Next button clicks
             prevBtn.addEventListener('click', () => {
                 if (currentPage > 1) {
@@ -692,7 +708,8 @@
                 }
             });
 
-            // Show first page by default
+            // Initialize pagination
+            generatePageButtons();
             showPage(1);
         });
     </script>
