@@ -503,38 +503,45 @@
                     </h3>
 
                     <form id="scheduleSearchForm" class="space-y-4">
-                        <!-- First Row: Port of Receipt and Port of Discharging in same line -->
-                        <div class="flex flex-col md:flex-row md:items-center gap-4">
-                            <div class="flex-1">
-                                <label class="block text-sm font-medium mb-2">Port of Receipt:</label>
-                                <select id="portOfReceipt" class="form-input">
-                                    <option value="">選択してください</option>
-                                    <option value="CNSHG">上海 (CNSHG)</option>
-                                    <option value="CNSZX">深圳 (CNSZX)</option>
-                                    <option value="CNXMG">厦門 (CNXMG)</option>
-                                    <option value="JPYOK">横浜 (JPYOK)</option>
-                                    <option value="JPOSA">大阪 (JPOSA)</option>
-                                    <option value="JPKOB">神戸 (JPKOB)</option>
-                                    <option value="SGSIN">シンガポール (SGSIN)</option>
-                                    <option value="HKHKG">香港 (HKHKG)</option>
-                                </select>
-                            </div>
+                        <!-- Both Search Conditions in Same Line -->
+                        <!-- Both Search Conditions in Same Line -->
+<div class="flex flex-col md:flex-row md:items-center gap-1"> <!-- 将 gap-2 改为 gap-1 -->
+    <!-- Port of Receipt -->
+    <div class="flex items-center md:w-32 gap-1"> <!-- 将 md:w-40 改为 md:w-32 -->
+        <label class="text-sm font-medium">Port of Receipt:</label>
+    </div>
+    <div class="flex-1">
+        <select id="portOfReceipt" class="form-input">
+            <option value="">選択してください</option>
+            <option value="CNSHG">上海 (CNSHG)</option>
+            <option value="CNSZX">深圳 (CNSZX)</option>
+            <option value="CNXMG">厦門 (CNXMG)</option>
+            <option value="JPYOK">横浜 (JPYOK)</option>
+            <option value="JPOSA">大阪 (JPOSA)</option>
+            <option value="JPKOB">神戸 (JPKOB)</option>
+            <option value="SGSIN">シンガポール (SGSIN)</option>
+            <option value="HKHKG">香港 (HKHKG)</option>
+        </select>
+    </div>
 
-                            <div class="flex-1">
-                                <label class="block text-sm font-medium mb-2">Port of Discharging:</label>
-                                <select id="portOfDischarging" class="form-input">
-                                    <option value="">選択してください</option>
-                                    <option value="USLAX">ロサンゼルス (USLAX)</option>
-                                    <option value="USNYC">ニューヨーク (USNYC)</option>
-                                    <option value="NLRTM">ロッテルダム (NLRTM)</option>
-                                    <option value="DEHAM">ハンブルク (DEHAM)</option>
-                                    <option value="GBLON">ロンドン (GBLON)</option>
-                                    <option value="AUMEL">メルボルン (AUMEL)</option>
-                                    <option value="JPYOK">横浜 (JPYOK)</option>
-                                    <option value="JPOSA">大阪 (JPOSA)</option>
-                                </select>
-                            </div>
-                        </div>
+    <!-- Port of Discharging -->
+    <div class="flex items-center md:w-40 gap-1"> <!-- 将 md:w-40 改为 md:w-32 -->
+        <label class="text-sm font-medium">Port of Discharging:</label>
+    </div>
+    <div class="flex-1">
+        <select id="portOfDischarging" class="form-input">
+            <option value="">選択してください</option>
+            <option value="USLAX">ロサンゼルス (USLAX)</option>
+            <option value="USNYC">ニューヨーク (USNYC)</option>
+            <option value="NLRTM">ロッテルダム (NLRTM)</option>
+            <option value="DEHAM">ハンブルク (DEHAM)</option>
+            <option value="GBLON">ロンドン (GBLON)</option>
+            <option value="AUMEL">メルボルン (AUMEL)</option>
+            <option value="JPYOK">横浜 (JPYOK)</option>
+            <option value="JPOSA">大阪 (JPOSA)</option>
+        </select>
+    </div>
+</div>
 
                         <!-- Second Row: Buttons (Right-aligned) -->
                         <div class="flex justify-end space-x-3 pt-4">
