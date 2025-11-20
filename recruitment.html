@@ -621,7 +621,7 @@
     </section>
 
     <!-- Job Listings -->
-    <section class="py-20 bg-gray-100 dark:bg-gray-800">
+    <section id="jobs" class="py-20 bg-gray-100 dark:bg-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12 animate-on-scroll">
                 <h2 class="text-3xl md:text-4xl font-serif font-bold text-gray-900 dark:text-white mb-4">
@@ -1018,8 +1018,8 @@
                     <h4 class="font-bold mb-4">会社情報</h4>
                     <ul class="space-y-2 text-sm text-gray-400">
                         <li><a href="company.html" class="hover:text-white transition-colors">会社案内</a></li>
-                        <li><a href="company.html" class="hover:text-white transition-colors">営業所</a></li>
-                        <li><a href="recruitment.html" class="hover:text-white transition-colors">採用情報</a></li>
+                        <li><a href="company.html#offices" class="hover:text-white transition-colors">営業所</a></li>
+                        <li><a href="recruitment.html#jobs" class="hover:text-white transition-colors">採用情報</a></li>
                     </ul>
                 </div>
             </div>
@@ -1040,8 +1040,14 @@
             const modal = document.getElementById('applicationModal');
             const title = document.getElementById('applicationTitle');
 
-            // 统一所有弹窗标题
-            title.textContent = '営業職（国内物流）応募フォーム';
+            // 根据岗位类型设置对应的弹窗标题
+            const jobTitles = {
+                'sales': '営業職（国内物流）応募フォーム',
+                'operation': 'オペレーションスタッフ応募フォーム',
+                'engineer': 'システムエンジニア応募フォーム'
+            };
+
+            title.textContent = jobTitles[jobType] || '応募フォーム';
             modal.classList.remove('hidden');
             
             // Animate modal
