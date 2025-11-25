@@ -107,6 +107,7 @@
             background: transparent;
             position: relative;
             overflow: hidden;
+            min-height: 100vh;
         }
 
         .hero-bg::before {
@@ -122,20 +123,20 @@
             z-index: 1;
         }
 
-        
         .hero-content {
             position: relative;
             z-index: 2;
         }
 
-        /* 透明导航栏样式 */
-        .nav-transparent {
+        /* 导航栏样式 - 透明效果但非固定定位 */
+        .nav-overlay {
             position: relative;
-            background: transparent; /* 完全透明背景 */
-            backdrop-filter: none; /* 移除毛玻璃效果 */
+            background: transparent;
+            backdrop-filter: none;
             -webkit-backdrop-filter: none;
-            border: none; /* 移除边框 */
-            box-shadow: none; /* 移除阴影 */
+            border: none;
+            box-shadow: none;
+            z-index: 10;
         }
 
         .nav-content {
@@ -376,173 +377,167 @@
             </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav-transparent fixed top-0 w-full z-50">
-        <div class="nav-content w-full px-0 sm:px-2 lg:px-4">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo - 修改英文位置 -->
-                <div class="flex items-center pl-4 sm:pl-6 lg:pl-8">
-                    <div class="flex-shrink-0 flex items-center">
-                        <!-- Logo Image -->
-                        <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-20 w-20 mr-6">
-                        <!-- Logo Text -->
-                        <div class="flex flex-col justify-center">
-                            <!-- 中远海运物流 -->
-                            <h1 class="text-1.5xl font-black leading-tight tracking-tight" style="font-family: 'Noto Serif SC', serif !important; font-weight: 900; color: #00508F;">
-                                コスコシッピングロジスティックスジャパン株式会社
-                            </h1>
-                            <!-- COSCO SHIPPING LOGISTICS (JAPAN) - 向上移动 -->
-                            <p class="text-3xl text-base text-gray-400  -mt-1 font-medium"> <!-- 添加 -mt-1 向上移动 -->
-                                COSCO Shipping Logistics (Japan) Co., Ltd.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Desktop Navigation -->
-                <div class="hidden md:block flex-1">
-                    <!-- 小于20寸屏幕时分行布局 -->
-                    <div class="nav-small-screen">
-                        <!-- 上行：前4个菜单 -->
-                        <div class="flex justify-end items-center space-x-0.5 pr-1 mb-1">
-                            <a href="index.html" class="nav-link text-primary-600 hover:text-accent-500 px-2 py-1 rounded-md text-sm font-medium border-b-2 border-primary-600 transition-colors">
-                                <span data-i18n="home">ホーム</span>
-                            </a>
-                            <a href="company.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                <span data-i18n="company">会社案内</span>
-                            </a>
-                            <a href="schedule.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                <span data-i18n="schedule">スケジュール</span>
-                            </a>
-                            <a href="announcement.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                お知らせ
-                            </a>
-                        </div>
-                        <!-- 下行：后3个菜单 -->
-                        <div class="flex justify-end items-center space-x-0.5 pr-1">
-                            <a href="contact.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                <span data-i18n="contact">お問い合わせ</span>
-                            </a>
-                            <a href="recruitment.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                採用情報
-                            </a>
-                            <a href="downloads.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                ダウンロード
-                            </a>
-                            <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-white px-2 py-1 rounded-md text-sm font-medium transition-colors">
-                                海外代理店専用
-                            </a>
+    <!-- Hero Section with Navigation Overlay -->
+    <section class="hero-bg">
+        <!-- Navigation Overlay -->
+        <nav class="nav-overlay">
+            <div class="nav-content w-full px-0 sm:px-2 lg:px-4">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex items-center pl-4 sm:pl-6 lg:pl-8">
+                        <div class="flex-shrink-0 flex items-center">
+                            <!-- Logo Image -->
+                            <img src="picture/微信图片_cosco.png" alt="COSCO Logo" class="h-20 w-20 mr-6">
+                            <!-- Logo Text -->
+                            <div class="flex flex-col justify-center">
+                                <h1 class="text-1.5xl font-black leading-tight tracking-tight" style="font-family: 'Noto Serif SC', serif !important; font-weight: 900; color: #00508F;">
+                                    コスコシッピングロジスティックスジャパン株式会社
+                                </h1>
+                                <p class="text-3xl text-base text-gray-400 -mt-1 font-medium">
+                                    COSCO Shipping Logistics (Japan) Co., Ltd.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- 大于等于20寸屏幕时单行布局 -->
-                    <div class="nav-large-screen hidden">
-                        <div class="flex items-center justify-end space-x-0.5 pr-1">
-                            <a href="index.html" class="nav-link text-primary-600 hover:text-primary-800 px-2 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600 transition-colors">
-                                <span data-i18n="home">ホーム</span>
-                            </a>
-                            <a href="company.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                <span data-i18n="company">会社案内</span>
-                            </a>
-                            <a href="schedule.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                <span data-i18n="schedule">スケジュール</span>
-                            </a>
-                            <a href="announcement.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                お知らせ
-                            </a>
-                            <a href="contact.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                <span data-i18n="contact">お問い合わせ</span>
-                            </a>
-                            <a href="recruitment.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                採用情報
-                            </a>
-                            <a href="downloads.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                ダウンロード
-                            </a>
-                            <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-white px-2 py-2 rounded-md text-sm font-medium transition-colors">
-                                海外代理店専用
-                            </a>
+                    <!-- Desktop Navigation -->
+                    <div class="hidden md:block flex-1">
+                        <!-- 小于20寸屏幕时分行布局 -->
+                        <div class="nav-small-screen">
+                            <!-- 上行：前4个菜单 -->
+                            <div class="flex justify-end items-center space-x-0.5 pr-1 mb-1">
+                                <a href="index.html" class="nav-link text-primary-600 hover:text-accent-500 px-2 py-1 rounded-md text-sm font-medium border-b-2 border-primary-600 transition-colors">
+                                    <span data-i18n="home">ホーム</span>
+                                </a>
+                                <a href="company.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    <span data-i18n="company">会社案内</span>
+                                </a>
+                                <a href="schedule.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    <span data-i18n="schedule">スケジュール</span>
+                                </a>
+                                <a href="announcement.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    お知らせ
+                                </a>
+                            </div>
+                            <!-- 下行：后3个菜单 -->
+                            <div class="flex justify-end items-center space-x-0.5 pr-1">
+                                <a href="contact.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    <span data-i18n="contact">お問い合わせ</span>
+                                </a>
+                                <a href="recruitment.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    採用情報
+                                </a>
+                                <a href="downloads.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    ダウンロード
+                                </a>
+                                <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-1 rounded-md text-sm font-medium transition-colors">
+                                    海外代理店専用
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- 大于等于20寸屏幕时单行布局 -->
+                        <div class="nav-large-screen hidden">
+                            <div class="flex items-center justify-end space-x-0.5 pr-1">
+                                <a href="index.html" class="nav-link text-primary-600 hover:text-primary-800 px-2 py-2 rounded-md text-sm font-medium border-b-2 border-primary-600 transition-colors">
+                                    <span data-i18n="home">ホーム</span>
+                                </a>
+                                <a href="company.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    <span data-i18n="company">会社案内</span>
+                                </a>
+                                <a href="schedule.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    <span data-i18n="schedule">スケジュール</span>
+                                </a>
+                                <a href="announcement.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    お知らせ
+                                </a>
+                                <a href="contact.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    <span data-i18n="contact">お問い合わせ</span>
+                                </a>
+                                <a href="recruitment.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    採用情報
+                                </a>
+                                <a href="downloads.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    ダウンロード
+                                </a>
+                                <a href="overseas-agents.html" class="nav-link text-gray-600 hover:text-primary-600 px-2 py-2 rounded-md text-sm font-medium transition-colors">
+                                    海外代理店専用
+                                </a>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Language Selector & Theme Toggle -->
-                <div class="hidden md:flex items-center space-x-2 pr-4 sm:pr-6 lg:pr-8">
-                    <select id="languageSelector" class="form-input text-sm py-1 px-2">
-                        <option value="ja">日本語</option>
-                        <option value="zh">中文</option>
-                    
-                    </select>
+                    <!-- Language Selector & Login -->
+                    <div class="hidden md:flex items-center space-x-2 pr-4 sm:pr-6 lg:pr-8">
+                        <select id="languageSelector" class="form-input text-sm py-1 px-2">
+                            <option value="ja">日本語</option>
+                            <option value="zh">中文</option>
+                        </select>
 
-                
+                        <!-- Login Button -->
+                        <button id="loginBtn" class="p-2 text-gray-900 hover:text-black hover:bg-gray-800/70 rounded-lg transition-colors">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                            </svg>
+                        </button>
+                    </div>
 
-                    <!-- Login Button - 图标版本 -->
-                    <button id="loginBtn" class="p-2 text-gray-900 hover:text-black hover:bg-gray-800/70 rounded-lg transition-colors">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                        </svg>
-                    </button>
-                </div>
-
-                <!-- Mobile menu button -->
-                <div class="md:hidden flex items-center">
-                    <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-black hover:bg-gray-800/70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-500">
-                        <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </button>
+                    <!-- Mobile menu button -->
+                    <div class="md:hidden flex items-center">
+                        <button id="mobileMenuToggle" class="inline-flex items-center justify-center p-2 rounded-md text-gray-900 hover:text-black hover:bg-gray-800/70 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-accent-500">
+                            <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
 
-       <!-- Mobile Navigation -->
-<div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-300 shadow-lg">
-    <div class="px-2 pt-2 pb-3 space-y-1 max-h-[70vh] overflow-y-auto">
-        <a href="index.html" class="block px-3 py-2 text-gray-900 font-medium border-l-4 border-accent-500 hover:bg-gray-100 transition-colors">
-            <span data-i18n="home">ホーム</span>
-        </a>
-        <a href="company.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            <span data-i18n="company">会社案内</span>
-        </a>
-        <a href="schedule.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            <span data-i18n="schedule">スケジュール</span>
-        </a>
-        <a href="announcement.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            <span data-i18n="announcement">お知らせ</span>
-        </a>
-        <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            <span data-i18n="contact">お問い合わせ</span>
-        </a>
-        <a href="recruitment.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            <span data-i18n="recruitment">採用情報</span>
-        </a>
-        <a href="downloads.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            <span data-i18n="downloads">ダウンロード</span>
-        </a>
-        <a href="overseas-agents.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
-            海外代理店専用
-        </a>
-    </div>
+            <!-- Mobile Navigation -->
+            <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-300 shadow-lg">
+                <div class="px-2 pt-2 pb-3 space-y-1 max-h-[70vh] overflow-y-auto">
+                    <a href="index.html" class="block px-3 py-2 text-gray-900 font-medium border-l-4 border-accent-500 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="home">ホーム</span>
+                    </a>
+                    <a href="company.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="company">会社案内</span>
+                    </a>
+                    <a href="schedule.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="schedule">スケジュール</span>
+                    </a>
+                    <a href="announcement.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="announcement">お知らせ</span>
+                    </a>
+                    <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="contact">お問い合わせ</span>
+                    </a>
+                    <a href="recruitment.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="recruitment">採用情報</span>
+                    </a>
+                    <a href="downloads.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        <span data-i18n="downloads">ダウンロード</span>
+                    </a>
+                    <a href="overseas-agents.html" class="block px-3 py-2 text-gray-700 hover:text-gray-900 hover:bg-gray-100 transition-colors">
+                        海外代理店専用
+                    </a>
+                </div>
 
-    <div class="px-4 py-3 border-t border-gray-200 bg-white">
-        <button id="mobileLoginBtn" class="btn-primary w-full mb-3">
-            <span data-i18n="login">ログイン</span>
-        </button>
-        <select id="mobileLanguageSelector" class="form-input text-sm w-full mb-3">
-            <option value="ja">日本語</option>
-            <option value="zh">中文</option>
-            <option value="en">English</option>
-        </select>
-        <!-- 删除多余的登录图标按钮 -->
-    </div>
-</div>
-        </div>
-    </nav>
+                <div class="px-4 py-3 border-t border-gray-200 bg-white">
+                    <button id="mobileLoginBtn" class="btn-primary w-full mb-3">
+                        <span data-i18n="login">ログイン</span>
+                    </button>
+                    <select id="mobileLanguageSelector" class="form-input text-sm w-full mb-3">
+                        <option value="ja">日本語</option>
+                        <option value="zh">中文</option>
+                        
+                    </select>
+                </div>
+            </div>
+        </nav>
 
-    <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center pt-16">
+        <!-- Hero Content -->
         <div class="hero-content max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div class="text-center">
+            <div class="text-center pt-16">
                 <h1 class="text-5xl md:text-6xl lg:text-7xl font-serif font-bold text-gray-900 mb-8 leading-tight animate-on-scroll">
                     コスコシッピングロジスティックスジャパン
                     <span class="text-accent-500">株式会社</span>
@@ -555,78 +550,65 @@
         </div>
     </section>
 
+    <!-- 其他内容部分保持不变 -->
     <!-- Statistics Section -->
-
-
     <!-- Services Overview -->
-    
-
     <!-- Company Info Section -->
-   
-
     <!-- Quick Actions -->
-    
-
     <!-- News Carousel -->
-    
     <!-- Partners -->
-    
-
     <!-- CTA Section -->
 
-
-   <!-- Footer -->
-<footer class="bg-gray-900 text-white py-12">
-    <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
-        <!-- 修改网格布局，使用 justify-between 和更宽的间距 -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 justify-between">
-            <!-- 公司信息 - 第一列，保持不动 -->
-            <div class="md:col-span-1">
-                <div class="flex items-center mb-4">
-                    <span class="text-lg font-bold">COSCO Shipping Logistics</span>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 md:gap-12 justify-between">
+                <!-- 公司信息 - 第一列，保持不动 -->
+                <div class="md:col-span-1">
+                    <div class="flex items-center mb-4">
+                        <span class="text-lg font-bold">COSCO Shipping Logistics</span>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        中遠海運物流は、世界中に広がるネットワークで、お客様のグローバル物流ニーズにお応えします。
+                    </p>
                 </div>
-                <p class="text-gray-400 text-sm">
-                    中遠海運物流は、世界中に広がるネットワークで、お客様のグローバル物流ニーズにお応えします。
-                </p>
+
+                <!-- サービス - 第二列 -->
+                <div class="md:col-span-1 md:ml-auto">
+                    <h4 class="font-bold mb-4">サービス</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">海上輸送</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">特別輸送</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">複合輸送</a></li>
+                        <li><a href="company.html#services" class="hover:text-white transition-colors">倉庫サービス</a></li>
+                    </ul>
+                </div>
+
+                <!-- サポート - 第三列 -->
+                <div class="md:col-span-1 md:ml-auto">
+                    <h4 class="font-bold mb-4">サポート</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
+                        <li><a href="schedule.html" class="hover:text-white transition-colors">スケジュール検索</a></li>
+                    </ul>
+                </div>
+
+                <!-- 会社情報 - 第四列 -->
+                <div class="md:col-span-1 md:ml-auto">
+                    <h4 class="font-bold mb-4">会社情報</h4>
+                    <ul class="space-y-2 text-sm text-gray-400">
+                        <li><a href="company.html" class="hover:text-white transition-colors">会社案内</a></li>
+                        <li><a href="company.html#offices" class="hover:text-white transition-colors">営業所</a></li>
+                        <li><a href="recruitment.html#jobs" class="hover:text-white transition-colors">採用情報</a></li>
+                    </ul>
+                </div>
             </div>
 
-            <!-- サービス - 第二列 -->
-            <div class="md:col-span-1 md:ml-auto">
-                <h4 class="font-bold mb-4">サービス</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="company.html#services" class="hover:text-white transition-colors">海上輸送</a></li>
-                    <li><a href="company.html#services" class="hover:text-white transition-colors">特別輸送</a></li>
-                    <li><a href="company.html#services" class="hover:text-white transition-colors">複合輸送</a></li>
-                    <li><a href="company.html#services" class="hover:text-white transition-colors">倉庫サービス</a></li>
-                </ul>
-            </div>
-
-            <!-- サポート - 第三列 -->
-            <div class="md:col-span-1 md:ml-auto">
-                <h4 class="font-bold mb-4">サポート</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="contact.html" class="hover:text-white transition-colors">お問い合わせ</a></li>
-                    <li><a href="schedule.html" class="hover:text-white transition-colors">スケジュール検索</a></li>
-                  
-                </ul>
-            </div>
-
-            <!-- 会社情報 - 第四列 -->
-            <div class="md:col-span-1 md:ml-auto">
-                <h4 class="font-bold mb-4">会社情報</h4>
-                <ul class="space-y-2 text-sm text-gray-400">
-                    <li><a href="company.html" class="hover:text-white transition-colors">会社案内</a></li>
-                    <li><a href="company.html#offices" class="hover:text-white transition-colors">営業所</a></li>
-                    <li><a href="recruitment.html#jobs" class="hover:text-white transition-colors">採用情報</a></li>
-                </ul>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; COSCO Shipping Logistics (Japan) Co., Ltd. All rights reserved.</p>
             </div>
         </div>
-
-        <div class="border-t border-gray-800 mt-8 pt-8 text-center text-sm text-gray-400">
-            <p>&copy;  COSCO Shipping Logistics (Japan) Co., Ltd. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="main.js"></script>
 </body>
