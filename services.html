@@ -1081,7 +1081,9 @@
                     </div>
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">メールアドレス</label>
-                        <input type="email" class="form-input" required>
+                        <input type="email" class="form-input" required
+                       oninvalid="this.setCustomValidity('Please enter a valid email address')"
+                       oninput="this.setCustomValidity('')">
                     </div>
                 </div>
                 

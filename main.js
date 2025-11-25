@@ -652,14 +652,18 @@ class CoscoApp {
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             <span data-i18n="username">ユーザーID</span>
                         </label>
-                        <input type="text" class="form-input" placeholder="ユーザーIDを入力" required>
+                        <input type="text" class="form-input" placeholder="" required
+                               oninvalid="this.setCustomValidity('Please enter your User ID')"
+                               oninput="this.setCustomValidity('')">
                     </div>
-                    
+
                     <div>
                         <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                             <span data-i18n="password">パスワード</span>
                         </label>
-                        <input type="password" class="form-input" placeholder="パスワードを入力" required>
+                        <input type="password" class="form-input" placeholder="" required
+                               oninvalid="this.setCustomValidity('Please enter your password')"
+                               oninput="this.setCustomValidity('')">
                     </div>
                     
                     <div class="flex items-center justify-between">
@@ -737,17 +741,37 @@ class CoscoApp {
     }
 
     handleLogin(modal) {
-        // 模拟登录过程
+        // Get form inputs
+        const form = modal.querySelector('#modalLoginForm');
+        const username = form.querySelector('input[type="text"]').value.trim();
+        const password = form.querySelector('input[type="password"]').value.trim();
+
+        // Validate inputs with English messages
+        if (!username) {
+            alert('Please enter your User ID');
+            form.querySelector('input[type="text"]').focus();
+            return;
+        }
+
+        if (!password) {
+            alert('Please enter your password');
+            form.querySelector('input[type="password"]').focus();
+            return;
+        }
+
+        // Simulate login process
         const submitBtn = modal.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
-        
+
         submitBtn.innerHTML = '<div class="loading-spinner w-4 h-4 border-2 border-white border-t-transparent rounded-full mx-auto"></div>';
         submitBtn.disabled = true;
 
         setTimeout(() => {
-            // 模拟登录成功
-            alert('ログイン成功！実際のシステムでは、ここでダッシュボードにリダイレクトされます。');
+            // Simulate successful login with English message
+            alert('Login successful! In a real system, you would be redirected to the dashboard.');
             this.closeModal(modal);
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
         }, 2000);
     }
 

@@ -599,7 +599,9 @@
                             <label for="inquiryType" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 お問い合わせ種別 <span class="text-red-500">*</span>
                             </label>
-                            <select id="inquiryType" name="inquiryType" class="form-input" required>
+                            <select id="inquiryType" name="inquiryType" class="form-input" required
+                                oninvalid="this.setCustomValidity('Please select an inquiry type')"
+                                oninput="this.setCustomValidity('')">
                                 <option value="">選択してください</option>
                                 <option value="estimate">お見積もり依頼</option>
                                 <option value="booking">予約・手配</option>
@@ -615,7 +617,9 @@
                                 <label for="companyName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     会社名 <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="companyName" name="companyName" class="form-input" required>
+                                <input type="text" id="companyName" name="companyName" class="form-input" required
+                                 oninvalid="this.setCustomValidity('Please enter your company name')"
+                                 oninput="this.setCustomValidity('')">
                             </div>
                             <div>
                                 <label for="department" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -630,7 +634,9 @@
                                 <label for="contactPerson" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     ご担当者名 <span class="text-red-500">*</span>
                                 </label>
-                                <input type="text" id="contactPerson" name="contactPerson" class="form-input" required>
+                                <input type="text" id="contactPerson" name="contactPerson" class="form-input" required
+                                       oninvalid="this.setCustomValidity('Please enter your name')"
+                                       oninput="this.setCustomValidity('')">
                             </div>
                             <div>
                                 <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
@@ -645,13 +651,17 @@
                                 <label for="email" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     メールアドレス <span class="text-red-500">*</span>
                                 </label>
-                                <input type="email" id="email" name="email" class="form-input" required>
+                                <input type="email" id="email" name="email" class="form-input" required
+                           oninvalid="this.setCustomValidity('Please enter a valid email address')"
+                           oninput="this.setCustomValidity('')">
                             </div>
                             <div>
                                 <label for="phone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     電話番号 <span class="text-red-500">*</span>
                                 </label>
-                                <input type="tel" id="phone" name="phone" class="form-input" required>
+                                <input type="tel" id="phone" name="phone" class="form-input" required
+                        oninvalid="this.setCustomValidity('Please enter your phone number')"
+                        oninput="this.setCustomValidity('')">
                             </div>
                         </div>
 
@@ -678,7 +688,9 @@
                             <label for="message" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 お問い合わせ内容(500文字以内) <span class="text-red-500">*</span>
                             </label>
-                            <textarea id="message" name="message" class="form-input form-textarea" rows="5" required placeholder="お問い合わせ内容について、担当者より返事致します。"></textarea>
+                            <textarea id="message" name="message" class="form-input form-textarea" rows="5" required placeholder="お問い合わせ内容について、担当者より返事致します。"
+                                  oninvalid="this.setCustomValidity('Please enter your message')"
+                                  oninput="this.setCustomValidity('')"></textarea>
                         </div>
 
 
