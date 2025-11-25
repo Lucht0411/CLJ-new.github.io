@@ -431,14 +431,18 @@
                             <label for="agentCode" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 User ID
                             </label>
-                            <input type="text" id="agentCode" name="agentCode" class="form-input" required placeholder="例: AGENT001">
+                            <input type="text" id="agentCode" name="agentCode" class="form-input" required
+                                   oninvalid="this.setCustomValidity('Please enter your user ID')"
+                                   oninput="this.setCustomValidity('')">
                         </div>
 
                         <div>
                             <label for="password" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                 Password
                             </label>
-                            <input type="password" id="password" name="password" class="form-input" required placeholder="••••••••">
+                            <input type="password" id="password" name="password" class="form-input" required placeholder=""
+                                   oninvalid="this.setCustomValidity('Please enter your password')"
+                                   oninput="this.setCustomValidity('')">
                         </div>
 
                     
@@ -482,7 +486,9 @@
                                 <label for="regUserId" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     *User ID:
                                 </label>
-                                <input type="text" id="regUserId" name="userId" class="form-input" required placeholder="例: AGENT001">
+                                <input type="text" id="regUserId" name="userId" class="form-input" required placeholder=""
+                                       oninvalid="this.setCustomValidity('Please enter a User ID')"
+                                       oninput="this.setCustomValidity('')">
                             </div>
 
                             <!-- User Name -->
@@ -490,7 +496,9 @@
                                 <label for="regUserName" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     *User Name:
                                 </label>
-                                <input type="text" id="regUserName" name="userName" class="form-input" required>
+                                <input type="text" id="regUserName" name="userName" class="form-input" required
+                                       oninvalid="this.setCustomValidity('Please enter your name')"
+                                       oninput="this.setCustomValidity('')">
                             </div>
 
                             <!-- Password -->
@@ -498,8 +506,10 @@
                                 <label for="regPassword" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     *Password:
                                 </label>
-                                <input type="password" id="regPassword" name="password" class="form-input" required minlength="6">
-                               
+                                <input type="password" id="regPassword" name="password" class="form-input" required minlength="6"
+                                       oninvalid="this.setCustomValidity('Please enter a password (minimum 6 characters)')"
+                                       oninput="this.setCustomValidity('')">
+
                             </div>
 
                             <!-- E-mail Address -->
@@ -507,7 +517,9 @@
                                 <label for="regEmail" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     *E-mail Address:
                                 </label>
-                                <input type="email" id="regEmail" name="email" class="form-input" required>
+                                <input type="email" id="regEmail" name="email" class="form-input" required
+                                       oninvalid="this.setCustomValidity('Please enter a valid email address')"
+                                       oninput="this.setCustomValidity('')">
                             </div>
 
                             <!-- Company -->
@@ -523,7 +535,9 @@
                                 <label for="regTelephone" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                                     *Telephone:
                                 </label>
-                                <input type="tel" id="regTelephone" name="telephone" class="form-input" required>
+                                <input type="tel" id="regTelephone" name="telephone" class="form-input" required
+                                       oninvalid="this.setCustomValidity('Please enter your telephone number')"
+                                       oninput="this.setCustomValidity('')">
                             </div>
                         </div>
 
@@ -683,7 +697,7 @@
                         easing: 'easeInOutQuad'
                     });
 
-                    alert('代理店コードまたはパスワードが正しくありません。');
+                    alert('Agent code or password is incorrect.');
                 }
             });
 
@@ -783,7 +797,7 @@
             const confirmPassword = document.getElementById('regConfirmPassword').value;
 
             if (password !== confirmPassword) {
-                alert('パスワードが一致しません。再度ご確認ください。');
+                alert('Passwords do not match. Please check again.');
                 return;
             }
 
@@ -820,14 +834,14 @@
                                 </svg>
                             </div>
                             <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                                登録申請ありがとうございます
+                                Thank you for your registration application
                             </h3>
                             <p class="text-gray-600 dark:text-gray-400 mb-4">
-                                申請内容を確認後、承認メールをお送りします。<br>
-                                通常3-5営業日かかります。
+                                We will review your application and send an approval email.<br>
+                                This usually takes 3-5 business days.
                             </p>
                             <p class="text-sm text-gray-500 dark:text-gray-500">
-                                お問い合わせ：info@cosco-logistics.jp
+                                Contact: info@cosco-logistics.jp
                             </p>
                         </div>
                     `;
