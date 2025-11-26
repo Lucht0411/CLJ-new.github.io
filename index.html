@@ -128,23 +128,21 @@
             z-index: 2;
         }
 
-        /* 固定导航栏样式 with blur effect */
+        /* 固定导航栏样式 */
         .nav-transparent {
             position: fixed;
             top: 0;
             left: 0;
             right: 0;
             z-index: 50;
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background-color: #ECF4FF;
             border: none;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
         /* Dark mode navigation */
         .dark .nav-transparent {
-            background: rgba(17, 24, 39, 0.85);
+            background-color: #ECF4FF;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
         }
 
@@ -511,7 +509,7 @@
         </div>
 
        <!-- Mobile Navigation -->
-<div id="mobileMenu" class="hidden md:hidden bg-white border-t border-gray-300 shadow-lg">
+<div id="mobileMenu" class="hidden md:hidden border-t border-gray-300 shadow-lg" style="background-color: #ECF4FF;">
     <div class="px-2 pt-2 pb-3 space-y-1 max-h-[70vh] overflow-y-auto">
         <a href="index.html" class="block px-3 py-2 text-gray-900 font-medium border-l-4 border-accent-500 hover:bg-gray-100 transition-colors">
             <span data-i18n="home">ホーム</span>
